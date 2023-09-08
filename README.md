@@ -29,8 +29,11 @@
 * 休肝日&飲酒記録の詳細を表示
 * 休肝日のリマインダー機能
   * LINE Messaging API及びLINE Messaging API SDK for Rubyを用いて、あらかじめ登録された休肝日にLINEでリマインダーを送る
-* 休暇日&飲酒記録の振り返り機能
+* 休肝日&飲酒記録の振り返り機能
   * LINE Messaging API及びLINE Messaging API SDK for Rubyを用いて、1週間の休肝日の数や総アルコール摂取量をまとめた通知を送る
+* 友人や家族と休肝日&飲酒記録の共有
+  * 友人や家族をアプリに招待し、グループを作成して休肝日と飲酒記録の共有し、友人・家族がユーザの飲酒状況を確認できる
+  * グループのユーザは利用ユーザに対して励ましなどのコメントができる
 
 ### その後の機能
 * 飲酒状況のグラフ化
@@ -47,7 +50,8 @@
 ### 機能の実装方針予定
 * Ruby: 3.0系
 * Rails: 7.0系
-* ユーザ登録及び認証機能: Sorcery
+* ユーザ登録及び認証機能: devise
+* ユーザ招待機能: devise_invitable
 * 画像アップロード: Active Storage
 * カレンダー表示: simple_calendar
 * LINE通知: LINE Messaging API及びLINE Messaging API SDK for Ruby
