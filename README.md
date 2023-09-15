@@ -15,9 +15,8 @@
 
 ## 実装を予定している機能
 ### MVP
-* 会員登録
-  * ユーザ登録で休肝日をあらかじめ登録する
-* ログイン
+* LINEアカウントでログイン
+  * 初回ログイン時に休肝日をあらかじめ登録する
 * 休肝日&飲酒履歴の表示
   * カレンダー形式でユーザの休肝日と飲酒日を表示する
   * 月曜日から日曜日までを1週間として、1週間の休肝日と飲酒日の数を表示する。詳細な飲酒記録をしているユーザは総アルコール摂取量を表示する（前週との差も表示）
@@ -50,8 +49,13 @@
 ### 機能の実装方針予定
 * Ruby: 3.0系
 * Rails: 7.0系
+* CSSフレームワーク: Tailwind CSS, daisyUI
 * ユーザ登録及び認証機能: devise
 * ユーザ招待機能: devise_invitable
 * 画像アップロード: Active Storage
 * カレンダー表示: simple_calendar
+* グラフ表示: chartkick
 * LINE通知: LINE Messaging API及びLINE Messaging API SDK for Ruby
+
+### 画面遷移図
+Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
