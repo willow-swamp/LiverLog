@@ -59,3 +59,6 @@
 
 ### 画面遷移図
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
+
+### ER図
+![Alt text](LiverLog-%E4%BF%AE%E6%AD%A32.drawio.png)
