@@ -47,8 +47,8 @@
     * 投稿に対していいねをする
 
 ### 機能の実装方針予定
-* Ruby: 3.0系
-* Rails: 7.0系
+* Ruby: 3.2.2
+* Rails: 7.0.8
 * CSSフレームワーク: Tailwind CSS, daisyUI
 * ユーザ登録及び認証機能: devise
 * ユーザ招待機能: devise_invitable
@@ -61,4 +61,4 @@
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
 
 ### ER図
-![Alt text](LiverLog-%E4%BF%AE%E6%AD%A32.drawio.png)
+![LiverLog-修正2 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/06bad456-db8e-4849-a464-75dacb540a8d)
