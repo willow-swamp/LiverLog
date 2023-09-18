@@ -47,8 +47,8 @@
     * 投稿に対していいねをする
 
 ### 機能の実装方針予定
-* Ruby: 3.0系
-* Rails: 7.0系
+* Ruby: 3.2.2
+* Rails: 7.0.8
 * CSSフレームワーク: Tailwind CSS, daisyUI
 * ユーザ登録及び認証機能: devise
 * ユーザ招待機能: devise_invitable
