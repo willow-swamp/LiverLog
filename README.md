@@ -6,7 +6,7 @@ https://liverlog.fly.dev
 ## サービス概要
 肝ログ（LiverLog）は、休肝日と飲酒日を記録することで、飲酒管理ができるサービスです。
 
-##　想定されるユーザー層
+## 想定されるユーザー層
 飲酒の習慣があるが、健康を意識して適度に飲酒したい人
 休肝日を設けて、その日を守りたいと考える人
 
@@ -61,11 +61,14 @@ https://liverlog.fly.dev
 * LINE通知: LINE Messaging API及びLINE Messaging API SDK for Ruby
 
 ■ 開発環境: Docker
+ 
 ■ サーバサイド: Ruby on Rails 7系
+ 
 　　Ruby 3.2.2 Rails 7.0.8
 ■ インフラ:
-・ Webアプリケーションサーバ: Fly.io
-・ データベースサーバ: PostgreSQL（Fly Postgres）
+ 
+* Webアプリケーションサーバ: Fly.io
+* データベースサーバ: PostgreSQL（Fly Postgres）
 
 ### 画面遷移図
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
