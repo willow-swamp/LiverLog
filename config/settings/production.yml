@@ -1,0 +1,2 @@
+sorcery:
+  line_callback_url: 'https://liverlog.fly.dev//oauth/callback?provider=line'

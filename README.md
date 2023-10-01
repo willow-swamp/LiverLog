@@ -53,18 +53,19 @@ https://liverlog.fly.dev
 * Ruby: 3.2.2
 * Rails: 7.0.8
 * CSSフレームワーク: Tailwind CSS, daisyUI
-* ユーザ登録及び認証機能: devise
-* ユーザ招待機能: devise_invitable
+* ユーザ登録及び認証機能: Sorcery
+* ユーザ招待機能:
 * 画像アップロード: Active Storage
 * カレンダー表示: simple_calendar
 * グラフ表示: chartkick
 * LINE通知: LINE Messaging API及びLINE Messaging API SDK for Ruby
 
 ■ 開発環境: Docker
+  
+■ サーバサイド:
+* Ruby 3.2.2
+* Rails 7.0.8
  
-■ サーバサイド: Ruby on Rails 7系
- 
-　　Ruby 3.2.2 Rails 7.0.8
 ■ インフラ:
  
 * Webアプリケーションサーバ: Fly.io
