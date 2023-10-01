@@ -1,0 +1,34 @@
+<%= form_with(model: @user, url: first_login_path, local: true) do |f| %>
+  <div class="form-control w-full max-w-full py-2">
+    <%= f.label :username, class: "label" %>
+    <%= f.text_field :username, class: "input input-bordered w-full max-w-xs" %>
+  </div>
+  <div class="form-control">
+    <label class="label">
+      <span class="label-text">What is your name?</span>
+    </label>
+    <div class="join join-vertical lg:join-horizontal">
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Monday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Tuesday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Wednesday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Thursday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Friday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Saturday" />
+      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Sunday" />
+    </div>
+  </div>
+  <div class="form-control py-2">
+    <%= f.label :comment, class: "label" %>
+    <%= f.text_area :comment, class:"h-18 textarea textarea-bordered" %>
+  </div>
+  <div class="form-control py-2">
+    <label class="label cursor-pointer">
+      <span class="label-text">Remember me</span> 
+      <input type="checkbox" class="toggle" />
+    </label>
+  </div>
+  <div class="card-actions justify-end">
+    <%= f.submit "登録", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
