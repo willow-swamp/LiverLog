@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#top"
   get 'first_login', to: 'static_pages#first_login'
-  resource :profile, only: [:edit, :update, :show]
+  patch 'first_login', to: 'static_pages#update'
+  put 'first_login', to: 'static_pages#update'
+  resources :users, only: [:edit, :update, :show]
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'

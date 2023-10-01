@@ -8,7 +8,7 @@ class OauthsController < ApplicationController
   def callback
     provider = "line"
     if @user = login_from(provider)
-      redirect_to profile_path, notice: "Logged in from #{provider.titleize}!"
+      redirect_to user_path(@user), notice: "Logged in from #{provider.titleize}!"
     else
       begin
         @user = create_from(provider)
