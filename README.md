@@ -75,4 +75,4 @@ https://liverlog.fly.dev
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
 
 ### ER図
-![LiverLog-修正2 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/06bad456-db8e-4849-a464-75dacb540a8d)
+![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/1e010f72-b75d-4489-a55d-259a77bb3083)
