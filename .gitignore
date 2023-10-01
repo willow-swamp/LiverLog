@@ -44,3 +44,7 @@ node_modules/
 .DS_Store
 /app/.DS_Store
 /app/assets/.DS_Store 
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
