@@ -1,9 +1,8 @@
 <div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24">
   <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
     <div class="card-body mx-auto items-center text-center">
-      <h2 class="card-title">プロフィール&休肝日設定</h2>
-      <p>プロフィールと休肝日を登録しよう！</p>
-      <%= render partial:'shared/form', locals: {user: @user, url: first_login_path} %>
+      <h2 class="card-title">プロフィール編集</h2>
+      <%= render partial: 'shared/form', locals: {user: @user, url: profile_path} %>
     </div>
   </div>
 </div>

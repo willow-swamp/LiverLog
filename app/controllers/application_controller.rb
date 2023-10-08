@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+  add_flash_types :success, :warning, :error, :info
+
   before_action :require_login
 
   private
 
   def not_authenticated
-      redirect_to root_path, alert: "Please login first"
+      redirect_to root_path, error: "Please login first"
   end
 end

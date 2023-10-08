@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   patch 'first_login', to: 'static_pages#update'
   put 'first_login', to: 'static_pages#update'
   resources :users, only: [:edit, :update, :show]
+  resource :profile, only: [:edit, :update, :show]
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'
