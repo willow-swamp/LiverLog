@@ -1,4 +1,4 @@
-<div class="navbar from-primary to-secondary bg-gradient-to-r">
+<div class="navbar from-primary to-secondary bg-gradient-to-r sticky top-0 z-10">
   <div class="flex-1">
     <div class="mx-4 text-xl font-bold">肝ログ</div>
   </div>
@@ -16,21 +16,13 @@
           </div>
         </label>
         <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-32">
-          <li><a>マイページ</a></li>
+          <li>
+            <%= link_to 'マイページ', profile_path %>
+          </li>
+          <li class="md:hidden"><a>コミュニティ</a></li>
+          <li class="md:hidden"><a>グループ</a></li>
         </ul>
       </div>
-    </div>
-    <div class="flex-none md:hidden">
-      <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-2">
-        <div class="max-h-full rounded-full">
-          <%= image_tag current_user.image %>
-        </div>
-      </label>
-      <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-32">
-        <li><a>マイページ</a></li>
-        <li><a>コミュニティ</a></li>
-        <li><a>グループ</a></li>
-      </ul>
     </div>
   </div>
 </div>

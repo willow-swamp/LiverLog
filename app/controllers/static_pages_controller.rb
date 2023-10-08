@@ -11,8 +11,9 @@ class StaticPagesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to profile_path, success: 'プロフィールを登録しました'
     else
+      flash.now[:error] = 'プロフィールの登録に失敗しました'
       render 'first_login'
     end
   end
@@ -25,7 +26,7 @@ class StaticPagesController < ApplicationController
 
   def first_login?
     if !@user.first_login
-      redirect_to user_path(@user)
+      redirect_to profile_path, warning: '既にプロフィールは登録済みです'
     end
   end
 
