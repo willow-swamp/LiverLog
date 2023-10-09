@@ -22,14 +22,12 @@
     <%= f.text_area :comment, class:"h-18 textarea textarea-bordered" %>
   </div>
   <div class="form-control py-2">
-    <label class="label cursor-pointer">
-      <span class="label-text">Remember me</span> 
-      <input type="checkbox" class="toggle" />
-    </label>
+    <%= f.label :reminder, class: "label cursor-pointer" %>
+    <%= f.check_box :reminder, class: "toggle" %>
   </div>
   <%= f.hidden_field :first_login, value: false %>
   <div class="card-actions justify-end">
-    <%= f.submit "登録", class: "btn btn-primary" %>
+    <%= f.submit (t 'defaults.register'), class: "btn btn-primary" %>
   </div>
 <% end %>
 
