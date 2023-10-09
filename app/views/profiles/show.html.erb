@@ -53,7 +53,12 @@
   <div class="divider md:divider-horizontal"></div>
   <div class="card rounded-box flex-grow bg-white shadow-xl md:w-2/3">
     <div class="flex w-full flex-col p-4">
-      <div class="card rounded-box grid h-20 place-items-center bg-base-300">content</div>
+      <div class="card rounded-box grid place-items-center bg-base-300">
+        content
+        <%= month_calendar do |date| %>
+          <%= date %>
+        <% end %>
+      </div>
       <div class="flex flex-col justify-evenly md:flex-row md:content-evenly">
         <div class="btn btn-accent m-4">休肝日・飲酒日を記録</div>
       </div>
