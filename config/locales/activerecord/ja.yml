@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+    attributes:
+      user:
+        username: 'ユーザー名'
+        image: 'ユーザーアイコン'
+        role: 'ユーザーの種類'
+        comment: 'ひとこと'
+        reminder: 'リマインダー'
