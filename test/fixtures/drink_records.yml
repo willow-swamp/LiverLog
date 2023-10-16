@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: one
+  record_type: 1
+  start_time: 2023-10-09 18:07:11
+  drink_type: MyString
+  drink_volume: 1
+  alcohol_percentage: 1
+
+two:
+  user_id: two
+  record_type: 1
+  start_time: 2023-10-09 18:07:11
+  drink_type: MyString
+  drink_volume: 1
+  alcohol_percentage: 1
