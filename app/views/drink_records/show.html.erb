@@ -1,0 +1,47 @@
+<div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24">
+  <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
+    <div class="mx-auto items-center text-center py-6">
+      <h2 class="card-title text-4xl">今日はどっち？</h2>
+    </div>
+    <div class="flex flex-col items-center justify-evenly md:flex-row md:content-evenly">
+      <input class="btn btn-primary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]" aria-label="休肝日" />
+      <input class="btn btn-secondary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]" aria-label="飲酒日" />
+    </div>
+    <div class="mx-8 border-b-2 font-semibold">詳細</div>
+    <div class="m-8">
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44">記録日</label>
+        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+      </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44">お酒の種類</label>
+        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+      </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44">お酒の量</label>
+        <div class="flex flex-row items-center">
+          <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+          <div class="ml-4 font-semibold">ml</div>
+        </div>
+      </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44">アルコール度数</label>
+        <div class="flex flex-row items-center">
+          <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+          <div class="ml-4 font-semibold">ml</div>
+        </div>
+      </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44 font-semibold">アルコール摂取量</label>
+        <div class="flex flex-row items-center">
+          <div class="font-semibold">20</div>
+          <div class="ml-4 font-semibold">ml</div>
+        </div>
+      </div>
+      <div class="card-actions justify-end">
+        <div class="btn btn-primary">登録</div>
+      </div>
+    </div>
+  </div>
+</div>
+

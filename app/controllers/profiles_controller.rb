@@ -23,6 +23,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :comment)
+    params.require(:user).permit(:username, :comment, :reminder)
   end
 end

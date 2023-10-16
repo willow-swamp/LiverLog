@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   put 'first_login', to: 'static_pages#update'
   resources :users, only: [:edit, :update, :show]
   resource :profile, only: [:edit, :update, :show]
+  resources :drink_records, only: [:new, :create, :show, :edit, :update, :destroy]
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'

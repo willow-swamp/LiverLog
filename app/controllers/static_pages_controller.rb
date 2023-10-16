@@ -31,6 +31,6 @@ class StaticPagesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :comment, :first_login)
+    params.require(:user).permit(:username, :comment, :first_login, :reminder)
   end
 end
