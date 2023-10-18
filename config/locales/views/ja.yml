@@ -12,6 +12,7 @@ ja:
     detail: '詳細'
     no_alcohol_day: '休肝日'
     alcohol_day: '飲酒日'
+    record_date_error: '未来の日付で記録はできません'
   static_pages:
     top:
       title: 'トップページ'
@@ -34,3 +35,7 @@ ja:
     new:
       title: '休肝日&飲酒記録'
       title_description: '休肝日または飲酒記録を登録しよう！'
+    edit:
+      title: '休肝日&飲酒記録編集'
+    create:
+      error: '休肝日または飲酒記録の登録に失敗しました'

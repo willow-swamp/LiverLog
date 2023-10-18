@@ -1,2 +1,9 @@
-<h1>DrinkRecords#edit</h1>
-<p>Find me in app/views/drink_records/edit.html.erb</p>
+<div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24">
+  <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
+    <div class="card-body mx-auto items-center py-6 text-center">
+      <h2 class="card-title"><%= t '.title' %></h2>
+    </div>
+    <%= render partial: 'drink_records/form', locals: { drink_record: @drink_record } %>
+  </div>
+</div>
+
