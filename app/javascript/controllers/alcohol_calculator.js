@@ -15,6 +15,8 @@ const calculateAndDisplayIntake = () => {
   calculateIntake();
 };
 
-document.addEventListener('DOMContentLoaded', calculateAndDisplayIntake);
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('turbo:load', calculateAndDisplayIntake);
+});
 
 export default calculateAndDisplayIntake;
