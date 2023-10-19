@@ -8,13 +8,9 @@
       <span class="label-text">休肝日を登録</span>
     </label>
     <div class="join join-vertical lg:join-horizontal">
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Monday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Tuesday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Wednesday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Thursday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Friday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Saturday" />
-      <input class="btn btn-xs btn-outline join-item" type="checkbox" name="options" aria-label="Sunday" />
+      <% I18n.t('date.day_names').each_with_index do |day, index| %>
+        <%= f.check_box :non_drinking_days, { multiple: true, checked: user.non_drinking_days&.include?(index), class: 'btn btn-xs btn-outline join-item', "aria-label": "#{day}"}, index, nil %>
+      <% end %>
     </div>
   </div>
   <div class="form-control py-2">

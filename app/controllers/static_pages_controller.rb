@@ -10,7 +10,9 @@ class StaticPagesController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    user_params_with_days = user_params
+    user_params_with_days[:non_drinking_days] = Array(user_params_with_days[:non_drinking_days]).map(&:to_i)
+    if @user.update(user_params_with_days)
       redirect_to profile_path, success: 'プロフィールを登録しました'
     else
       flash.now[:error] = 'プロフィールの登録に失敗しました'
@@ -31,6 +33,6 @@ class StaticPagesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :comment, :first_login, :reminder)
+    params.require(:user).permit(:username, :comment, :first_login, :reminder, non_drinking_days: [])
   end
 end
