@@ -5,8 +5,8 @@ class CreateDrinkRecords < ActiveRecord::Migration[7.0]
       t.integer :record_type, null: false
       t.datetime :start_time, null: false, unique: true
       t.string :drink_type
-      t.integer :drink_volume
-      t.integer :alcohol_percentage
+      t.integer :drink_volume, default: 0
+      t.integer :alcohol_percentage, default: 0
 
       t.timestamps
     end

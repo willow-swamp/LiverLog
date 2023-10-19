@@ -10,10 +10,10 @@
           </div>
           <div class="pl-6">
             <div>
-                <p><%= t '.no_alcohol_day' %></p>
-              <div class="badge badge-primary">primary</div>
-              <div class="badge badge-primary">primary</div>
-              <div class="badge badge-primary">primary</div>
+              <p><%= t '.no_alcohol_day' %></p>
+              <% @user.non_drinking_days.each do |index| %>
+                <div class="badge badge-primary"><%= I18n.t('date.day_names')[index] %></div>
+              <% end %>
             </div>
           </div>
         </div>

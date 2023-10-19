@@ -7,7 +7,7 @@
       <li><a><%= t 'defaults.community' %></a></li>
       <li><a><%= t 'defaults.group' %></a></li>
     </ul>
-    <a class="btn btn-accent"><%= t 'defaults.record' %></a>
+    <%= link_to t('defaults.record'), new_drink_record_path, class: 'btn btn-accent', data: { turbo: false } %>
     <div class="dropdown dropdown-end">
       <div class="flex-none">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-4">

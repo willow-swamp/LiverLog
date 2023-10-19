@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_090711) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_022656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,8 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_090711) do
     t.integer "record_type", null: false
     t.datetime "start_time", null: false
     t.string "drink_type"
-    t.integer "drink_volume"
-    t.integer "alcohol_percentage"
+    t.integer "drink_volume", default: 0
+    t.integer "alcohol_percentage", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_drink_records_on_user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_090711) do
     t.boolean "first_login", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "non_drinking_days", default: [], array: true
   end
 
   add_foreign_key "drink_records", "users"

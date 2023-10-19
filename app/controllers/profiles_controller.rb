@@ -5,7 +5,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    user_params_with_days = user_params
+    user_params_with_days[:non_drinking_days] = Array(user_params_with_days[:non_drinking_days]).map(&:to_i)
+    if @user.update(user_params_with_days)
       redirect_to profile_path, success: 'プロフィールを更新しました'
     else
       flash.now[:error] = 'プロフィールの更新に失敗しました'
@@ -23,6 +25,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :comment, :reminder)
+    params.require(:user).permit(:username, :comment, :reminder, non_drinking_days: [])
   end
 end

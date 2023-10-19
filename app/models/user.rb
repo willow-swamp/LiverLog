@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }
+  validates :non_drinking_days, presence: true
 end
