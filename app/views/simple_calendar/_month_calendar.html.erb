@@ -1,26 +1,26 @@
-<div class="simple-calendar">
+<div class="simple-calendar w-full bg-white">
   <div class="calendar-heading">
-    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
+    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title text-xl font-semibold"><%= start_date.year %> <%= t('date.month_names')[start_date.month] %></time>
 
     <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: "mx-2" %>
+      <%= link_to t('date.month_names')[start_date.month], calendar.url_for_today_view, class: "mx-2" %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: "mx-2" %>
     </nav>
   </div>
 
-  <table class="table table-striped">
+  <table class="simple-calendar-table table-striped table-fixed">
     <thead>
-      <tr>
+      <tr class="simple-calendar-tr">
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th class="simple-calendar-th"><%= t('date.abbr_day_names')[day.wday] %></th>
         <% end %>
       </tr>
     </thead>
 
     <tbody>
       <% date_range.each_slice(7) do |week| %>
-        <tr>
+        <tr class="simple-calendar-tr">
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>

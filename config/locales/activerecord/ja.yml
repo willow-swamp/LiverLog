@@ -17,3 +17,8 @@ ja:
         drink_type: '飲酒の種類'
         drink_volume: '飲酒量'
         alcohol_percentage: 'アルコール度数'
+  enums:
+    drink_record:
+      record_type:
+        no_drink: '休肝日'
+        drink: '飲酒日'
