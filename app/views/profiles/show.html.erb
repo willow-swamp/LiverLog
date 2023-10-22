@@ -54,14 +54,21 @@
   <div class="card rounded-box flex-grow bg-white shadow-xl md:w-2/3">
     <div class="flex w-full flex-col p-4">
       <div class="card rounded-box grid place-items-center bg-base-300">
-        <%= month_calendar do |date| %>
-          <%= date %>
+        <%= month_calendar(events: @drink_record) do |date, drink_record| %>
+          <div><%= date.day %></div>
+          <% drink_record.each do |record| %>
+            <% if record.no_drink? %>
+              <div class="badge badge-xs badge-primary md:badge-sm lg:badge-md"><%= record.record_type_i18n %></div>
+            <% elsif record.drink? %>
+              <div class="badge badge-xs badge-secondary md:badge-sm lg:badge-md"><%= record.record_type_i18n %></div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
       <div class="flex flex-col justify-evenly md:flex-row md:content-evenly">
         <%= link_to '休肝日・飲酒日を記録', new_drink_record_path, class:"btn btn-accent m-4", data: { turbo: false } %>
       </div>
-      <div class="card rounded-box grid h-20 place-items-center bg-base-300">content</div>
+      <div class="card rounded-box grid h-20 place-items-center bg-base-300 hidden">content</div>
     </div>
   </div>
 </div>

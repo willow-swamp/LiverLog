@@ -39,3 +39,7 @@ ja:
       title: '休肝日&飲酒記録編集'
     create:
       error: '休肝日または飲酒記録の登録に失敗しました'
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    today: "今日"

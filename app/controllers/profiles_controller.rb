@@ -16,6 +16,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    start_date = params.fetch(:start_time, Date.today).to_date
+    @drink_record = @user.drink_records.all
   end
 
   private
