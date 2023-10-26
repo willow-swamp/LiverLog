@@ -31,10 +31,10 @@ class DrinkRecordsController < ApplicationController
   end
 
   def update
-    @drink_record = current_user.drink_records.assign_attributes(drink_record_params)
+    @drink_record.assign_attributes(drink_record_params)
     if @drink_record.can_record_date?
       if @drink_record.save
-        redirect_to edit_profile_path
+        redirect_to profile_path
       else
         render :edit, status: :unprocessable_entity
       end
