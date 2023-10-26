@@ -13,7 +13,7 @@ class DrinkRecordsController < ApplicationController
     @drink_record = current_user.drink_records.new(drink_record_params)
     if @drink_record.can_record_date?
       if @drink_record.save
-        redirect_to profile_path
+        redirect_to profile_path, success: t('defaults.create_success')
       else
         flash.now[:error] = t '.error'
         render :new, status: :unprocessable_entity
@@ -45,6 +45,8 @@ class DrinkRecordsController < ApplicationController
   end
 
   def destroy
+    @drink_record.destroy!
+    redirect_to profile_path, success: t('defaults.delete_success')
   end
 
   private

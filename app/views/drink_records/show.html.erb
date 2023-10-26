@@ -1,45 +1,51 @@
 <div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24">
   <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
-    <div class="mx-auto items-center text-center py-6">
-      <h2 class="card-title text-4xl">今日はどっち？</h2>
+    <div class="card-body mx-auto items-center py-6 text-center">
+      <h2 class="card-title text-4xl"><%= t '.title' %></h2>
     </div>
     <div class="flex flex-col items-center justify-evenly md:flex-row md:content-evenly">
-      <input class="btn btn-primary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]" aria-label="休肝日" />
-      <input class="btn btn-secondary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]" aria-label="飲酒日" />
+      <% if @drink_record.no_drink? %>
+        <div class="btn btn-primary btn-active btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]"><%= t 'defaults.no_alcohol_day' %></div>
+        <div class="btn btn-secondary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]"><%= t 'defaults.alcohol_day' %></div>
+      <% else %>
+        <div class="btn btn-primary btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]"><%= t 'defaults.no_alcohol_day' %></div>
+        <div class="btn btn-secondary btn-active btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]"><%= t 'defaults.alcohol_day' %></div>
+      <% end %>
     </div>
     <div class="mx-8 border-b-2 font-semibold">詳細</div>
     <div class="m-8">
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44">記録日</label>
-        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <label class="label mr-8 w-44"><%= DrinkRecord.human_attribute_name(:start_time) %></label>
+        <div class="font-semibold"><%= @drink_record.start_time.strftime("%Y年 %m月 %d日(%a)") %></div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44">お酒の種類</label>
-        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <label class="label mr-8 w-44"><%= DrinkRecord.human_attribute_name(:drink_type) %></label>
+        <div class="font-semibold"><%= @drink_record.drink_type %></div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44">お酒の量</label>
+        <label class="label mr-8 w-44"><%= DrinkRecord.human_attribute_name(:drink_volume) %></label>
         <div class="flex flex-row items-center">
-          <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+          <div class="font-semibold"><%= @drink_record.drink_volume %></div>
           <div class="ml-4 font-semibold">ml</div>
         </div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44">アルコール度数</label>
+        <label class="label mr-8 w-44"><%= DrinkRecord.human_attribute_name(:alcohol_percentage) %></label>
         <div class="flex flex-row items-center">
-          <input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-          <div class="ml-4 font-semibold">ml</div>
+          <div class="font-semibold"><%= @drink_record.alcohol_percentage %></div>
+          <div class="ml-4 font-semibold">%</div>
         </div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44 font-semibold">アルコール摂取量</label>
+        <label class="label mr-8 w-44 font-semibold"><%= t 'defaults.amount_of_alcohol' %></label>
         <div class="flex flex-row items-center">
-          <div class="font-semibold">20</div>
+          <div class="font-semibold"><%= alcohol_caluculate(@drink_record.drink_volume, @drink_record.alcohol_percentage) %></div>
           <div class="ml-4 font-semibold">ml</div>
         </div>
       </div>
       <div class="card-actions justify-end">
-        <div class="btn btn-primary">登録</div>
+        <%= link_to t('defaults.edit'), edit_drink_record_path, class: "btn btn-primary" %>
+        <%= link_to t('defaults.delete'), drink_record_path, class: "btn btn-accent", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %>
       </div>
     </div>
   </div>
