@@ -3,13 +3,15 @@
     <%= f.radio_button :record_type, "no_drink", class: "btn btn-primary btn-outline join-item m-4 px-12 js-check", "aria-label": :"休肝日", id: "hide" %>
     <%= f.radio_button :record_type, "drink", class: "btn btn-secondary btn-outline join-item m-4 px-12 js-check", "aria-label": :"飲酒日" , id: "disp" %>
   </div>
+  <div class="m-8">
+    <div class="form-control mb-4 flex w-full flex-row items-center">
+      <%= f.label :start_time, class: "label mr-8 w-44" %>
+      <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: Date.today.strftime("%Y-%m-%d") %>
+    </div>
+  </div>
   <div id="drink-details">
     <div class="mx-8 border-b-2 font-semibold"><%= t 'defaults.detail' %></div>
     <div class="m-8">
-      <div class="form-control mb-4 flex w-full flex-row items-center">
-        <%= f.label :start_time, class: "label mr-8 w-44" %>
-        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: Date.today.strftime("%Y-%m-%d") %>
-      </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <%= f.label :drink_type, class: "label mr-8 w-44" %>
         <%= f.text_field :drink_type, class: "input input-bordered w-full max-w-xs" %>
@@ -29,7 +31,7 @@
         </div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
-        <label class="label mr-8 w-44 font-semibold">アルコール摂取量</label>
+        <label class="label mr-8 w-44 font-semibold"><%= t 'defaults.amount_of_alcohol' %></label>
         <div class="flex flex-row items-center">
           <div id="alcohol_intake", class="font-semibold">
             <%= alcohol_caluculate(drink_record.drink_volume, drink_record.alcohol_percentage) %>
