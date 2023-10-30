@@ -11,15 +11,10 @@ class DrinkRecordsController < ApplicationController
 
   def create
     @drink_record = current_user.drink_records.new(drink_record_params)
-    if @drink_record.can_record_date?
-      if @drink_record.save
-        redirect_to profile_path, success: t('defaults.create_success')
-      else
-        flash.now[:error] = t '.error'
-        render :new, status: :unprocessable_entity
-      end
+    if @drink_record.save
+      redirect_to profile_path, success: t('defaults.create_success')
     else
-      flash.now[:error] = t 'default.recoed_date_error'
+      flash.now[:error] = @drink_record.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,14 +27,10 @@ class DrinkRecordsController < ApplicationController
 
   def update
     @drink_record.assign_attributes(drink_record_params)
-    if @drink_record.can_record_date?
-      if @drink_record.save
-        redirect_to profile_path
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @drink_record.save
+      redirect_to profile_path, success: t('defaults.update_success')
     else
-      flash.now[:error] = t 'default.recoed_date_error'
+      flash.now[:error] = t 'defaults.record_error'
       render :edit, status: :unprocessable_entity
     end
   end
