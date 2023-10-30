@@ -30,7 +30,7 @@ class DrinkRecordsController < ApplicationController
     if @drink_record.save
       redirect_to profile_path, success: t('defaults.update_success')
     else
-      flash.now[:error] = t 'default.recoed_date_error'
+      flash.now[:error] = t 'defaults.record_error'
       render :edit, status: :unprocessable_entity
     end
   end

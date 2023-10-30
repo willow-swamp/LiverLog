@@ -14,7 +14,7 @@ ja:
     delete: '削除'
     no_alcohol_day: '休肝日'
     alcohol_day: '飲酒日'
-    record_date_error: '未来の日付で記録はできません'
+    record_error: '記録の登録に失敗しました'
     amount_of_alcohol: 'アルコール摂取量'
     delete_confirm: '削除しますか？'
     delete_success: '記録を削除しました'
