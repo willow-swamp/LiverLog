@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @layer components {
   .simple-calendar-table {
     -webkit-border-horizontal-spacing: 0px;

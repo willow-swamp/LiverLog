@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_022656) do
     t.datetime "start_time", null: false
     t.string "drink_type"
     t.integer "drink_volume", default: 0
-    t.integer "alcohol_percentage", default: 0
+    t.float "alcohol_percentage", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_drink_records_on_user_id"

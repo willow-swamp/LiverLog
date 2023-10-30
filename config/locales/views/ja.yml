@@ -19,6 +19,7 @@ ja:
     delete_confirm: '削除しますか？'
     delete_success: '記録を削除しました'
     create_success: '記録を登録しました'
+    update_success: '記録を更新しました'
   static_pages:
     top:
       title: 'トップページ'

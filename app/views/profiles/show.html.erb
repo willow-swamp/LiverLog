@@ -1,4 +1,4 @@
-<div class="flex flex-col p-4 md:flex-row md:p-8">
+<div class="flex flex-col p-4 md:flex-row md:p-8 flex-auto">
   <div class="card rounded-box flex-grow place-items-center bg-white shadow-xl md:w-1/3">
     <div class="w-full p-4">
       <div class="h-full flex-row items-center justify-center text-left md:justify-start md:text-left">
@@ -64,9 +64,9 @@
           <div><%= date.day %></div>
           <% drink_record.each do |record| %>
             <% if record.no_drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"badge badge-xs badge-primary md:badge-sm lg:badge-md", data: { turbo: false } %>
+              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md", data: { turbo: false } %>
             <% elsif record.drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"badge badge-xs badge-secondary md:badge-sm lg:badge-md", data: { turbo: false } %>
+              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md", data: { turbo: false } %>
             <% end %>
           <% end %>
         <% end %>
