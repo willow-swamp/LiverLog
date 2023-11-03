@@ -1,0 +1,10 @@
+<%= form_with(model: group, local: true) do |f| %>
+  <div class="form-control w-full max-w-full my-8">
+    <%= f.label :name, class: "label" %>
+    <%= f.text_field :name, class: "input input-bordered w-full max-w-xs" %>
+  </div>
+  <div class="card-actions justify-end">
+    <%= f.submit (t 'defaults.register'), class: "btn btn-primary" %>
+  </div>
+<% end %>
+

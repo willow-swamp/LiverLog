@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :authentications, dependent: :destroy
   has_many :drink_records, dependent: :destroy
+  has_many :user_groups, dependent: :destroy
+  has_many :groups, through: :user_groups, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates :username, presence: true

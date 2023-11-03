@@ -30,7 +30,7 @@
           <p class=""><%= t 'defaults.group' %></p>
           <div class="btn-neutral-100 btn w-full">グループ</div>
           <div class="text-right">
-            <a class="link text-xs"><%= t '.create_group' %></a>
+            <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false } %>
           </div>
         </div>
         <div><%= t 'defaults.record' %></div>
