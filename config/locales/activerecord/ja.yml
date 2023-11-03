@@ -3,6 +3,7 @@ ja:
     models:
       user: 'ユーザー'
       drink_record: '休肝日&飲酒記録'
+      group: 'グループ'
     attributes:
       user:
         username: 'ユーザー名'
@@ -17,6 +18,8 @@ ja:
         drink_type: '飲酒の種類'
         drink_volume: '飲酒量'
         alcohol_percentage: 'アルコール度数'
+      group:
+        name: 'グループ名'
   enums:
     drink_record:
       record_type:

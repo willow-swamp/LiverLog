@@ -48,6 +48,12 @@ ja:
       error: '休肝日または飲酒記録の登録に失敗しました'
     show:
       title: '記録詳細'
+  groups:
+    new:
+      title: 'グループ作成'
+    create:
+      success: 'グループを作成しました'
+      error: 'グループの作成に失敗しました'
   simple_calendar:
     previous: "<<"
     next: ">>"
