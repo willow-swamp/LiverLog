@@ -38,6 +38,7 @@ ja:
       create_group: 'グループを作成'
       no_alcohol_day_achievement: '休肝日達成率（今月）'
       alcohol_intake: '総アルコール摂取量（今月）'
+      no_group: 'グループなし'
   drink_records:
     new:
       title: '休肝日&飲酒記録'
@@ -54,6 +55,16 @@ ja:
     create:
       success: 'グループを作成しました'
       error: 'グループの作成に失敗しました'
+    show:
+      title: 'グループ詳細'
+      edit: 'グループ編集'
+      delete: 'グループ削除'
+      no_alcohol_day: '休肝日'
+      no_alcohol_day_achievement: '休肝日達成率（今月）'
+      alcohol_intake: '総アルコール摂取量（今月）'
+      admin: '管理者'
+      member: 'メンバー'
+      invite: 'メンバーを招待'
   simple_calendar:
     previous: "<<"
     next: ">>"

@@ -1,0 +1,5 @@
+<% user.groups.each do |group| %>
+  <div class="btn-neutral-100 btn w-full">
+    <%= link_to group.name, group_path(group), data: { turbo: false } %>
+  </div>
+<% end %>

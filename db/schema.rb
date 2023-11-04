@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_114113) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "group_admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_114113) do
   end
 
   add_foreign_key "drink_records", "users"
+  add_foreign_key "groups", "users", column: "group_admin_id"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end

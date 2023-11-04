@@ -10,6 +10,7 @@
           </div>
           <div class="pl-6">
             <div>
+            <h2 class="title-font text-xl font-semibold text-neutral-900"><%= @user.username %></h2>
               <p><%= t '.no_alcohol_day' %></p>
               <% @user.non_drinking_days.each do |index| %>
                 <div class="badge badge-primary"><%= I18n.t('date.day_names')[index] %></div>
@@ -19,7 +20,6 @@
         </div>
 
         <div class="flex-grow py-4 pl-4">
-          <h2 class="title-font text-xl font-semibold text-neutral-900 mb-4"><%= @user.username %></h2>
           <p><%= @user.comment %></p>
           <div class="text-right">
             <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs" %>
@@ -28,7 +28,13 @@
         </div>
         <div class="w-full">
           <p class=""><%= t 'defaults.group' %></p>
-          <div class="btn-neutral-100 btn w-full">グループ</div>
+          <% if @user.groups.present? %>
+            <%= render partial: 'profiles/groups', locals: { user: @user } %>
+          <% else %>
+            <div class="btn-neutral-100 btn btn-active w-full">
+              <%= t '.no_group' %>
+            </div>
+          <% end %>
           <div class="text-right">
             <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false } %>
           </div>
@@ -78,4 +84,3 @@
     </div>
   </div>
 </div>
-
