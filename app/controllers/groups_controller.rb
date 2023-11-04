@@ -7,8 +7,9 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.groups.new(group_params)
-    binding.pry
+    # binding.pry
     if @group.save
+      @group.save_group_member(current_user)
       redirect_to groups_path, success: t('.success')
     else
       flash.now[:error] = t('.error')
@@ -31,7 +32,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :group_admin_id)
   end
 
   def set_group
