@@ -10,23 +10,30 @@ class GroupsController < ApplicationController
     # binding.pry
     if @group.save
       @group.save_group_member(current_user)
-      redirect_to groups_path, success: t('.success')
+      redirect_to group_path, success: t('.success')
     else
       flash.now[:error] = t('.error')
       render :new, status: :unprocessable_entity
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @group.assign_attributes(group_params)
+    if @group.save
+      redirect_to group_path, success: t('.success')
+    else
+      flash.now[:error] = t('.error')
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @group.destroy!
+    redirect_to profile_path, success: t('.success')
   end
 
   private

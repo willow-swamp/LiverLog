@@ -65,6 +65,16 @@ ja:
       admin: '管理者'
       member: 'メンバー'
       invite: 'メンバーを招待'
+    edit:
+      title: 'グループ編集'
+      success: 'グループを更新しました'
+      error: 'グループの更新に失敗しました'
+    update:
+      success: 'グループを更新しました'
+      error: 'グループの更新に失敗しました'
+    destroy:
+      success: 'グループを削除しました'
+      error: 'グループの削除に失敗しました'
   simple_calendar:
     previous: "<<"
     next: ">>"
