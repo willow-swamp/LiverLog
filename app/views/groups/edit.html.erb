@@ -1,2 +1,8 @@
-<h1>Groups#edit</h1>
-<p>Find me in app/views/groups/edit.html.erb</p>
+<div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
+  <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
+    <div class="card-body mx-auto items-center py-6 text-center">
+      <h2 class="card-title"><%= t '.title' %></h2>
+      <%= render partial: 'groups/form', locals: { group: @group } %>
+    </div>
+  </div>
+</div>
