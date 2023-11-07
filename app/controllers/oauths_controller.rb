@@ -2,11 +2,11 @@ class OauthsController < ApplicationController
   skip_before_action :require_login
 
   def oauth
-    login_at("line")
+    login_at(params[:provider])
   end
 
   def callback
-    provider = "line"
+    provider = params[:provider]
     if @user = login_from(provider)
       redirect_to profile_path, success: "Logged in from #{provider.titleize}!"
     else
