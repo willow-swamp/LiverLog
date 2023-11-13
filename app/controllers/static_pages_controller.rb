@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   skip_before_action :require_login, only: [:top]
+  skip_before_action :require_general, only: [:top]
   before_action :set_user, only: [:first_login, :update]
   before_action :first_login?, only: [:first_login, :update]
 
