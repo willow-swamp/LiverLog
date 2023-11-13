@@ -2,7 +2,6 @@
   <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
     <div class="card-body mx-auto items-center text-center">
       <h2 class="card-title"><%= @group.group_admin.username %>から招待されています</h2>
-      <p><%= t '.title' %></p>
       <%= link_to t('defaults.login_with_line'), invitees_auth_at_provider_path(provider: :line, invite_token: @group.invite_token), class:"btn btn-primary", data: { turbo: false } %>
     </div>
   </div>
