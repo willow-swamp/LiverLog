@@ -4,6 +4,7 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
   validates :group_admin_id, presence: true
+  validates :invite_token, presence: true, uniqueness: true
 
   def save_group_member(user)
     self.users << user
@@ -11,5 +12,9 @@ class Group < ApplicationRecord
 
   def group_admin
     User.find(self.group_admin_id)
+  end
+
+  def set_invite_token
+    self.invite_token = SecureRandom.hex(16)
   end
 end

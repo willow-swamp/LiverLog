@@ -3,11 +3,9 @@ class StaticPagesController < ApplicationController
   before_action :set_user, only: [:first_login, :update]
   before_action :first_login?, only: [:first_login, :update]
 
-  def top
-  end
+  def top; end
 
-  def first_login
-  end
+  def first_login; end
 
   def update
     user_params_with_days = user_params

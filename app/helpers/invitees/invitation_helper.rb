@@ -1,0 +1,2 @@
+module Invitees::InvitationHelper
+end

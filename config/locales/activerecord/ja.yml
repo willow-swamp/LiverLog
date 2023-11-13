@@ -25,3 +25,8 @@ ja:
       record_type:
         no_drink: '休肝日'
         drink: '飲酒日'
+    user:
+      role:
+        admin: '管理者'
+        general: '一般ユーザー'
+        invitee: '招待ユーザー'

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
+  skip_before_action :require_general, only: %i[show]
 
   def new
     @group = current_user.groups.new
@@ -7,6 +8,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.groups.new(group_params)
+    @group.set_invite_token
     # binding.pry
     if @group.save
       @group.save_group_member(current_user)
