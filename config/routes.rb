@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+  namespace :invitees do
+    get 'invitation/new/:invite_token', to: 'invitation#new'
+    get 'invitation/first_login', to: 'invitation#first_login'
+    post 'oauth/callback', to: 'oauths#callback'
+    get 'oauth/callback', to: 'oauths#callback'
+    get 'oauth/:provider/:invite_token', to: 'oauths#oauth', as: :auth_at_provider
+  end
 end

@@ -1,0 +1,8 @@
+<div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
+  <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
+    <div class="card-body mx-auto items-center text-center">
+      <h2 class="card-title"><%= @group.group_admin.username %>から招待されています</h2>
+      <%= link_to t('defaults.login_with_line'), invitees_auth_at_provider_path(provider: :line, invite_token: @group.invite_token), class:"btn btn-primary", data: { turbo: false } %>
+    </div>
+  </div>
+</div>

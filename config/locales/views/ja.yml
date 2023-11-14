@@ -3,6 +3,8 @@ ja:
     top_page: 'トップページ'
     community: 'コミュニティ'
     login_with_line: 'LINEでログイン'
+    login_success: 'ログインしました'
+    login_failed: 'ログインに失敗しました'
     group: 'グループ'
     my_page: 'マイページ'
     record: '記録'
@@ -20,6 +22,7 @@ ja:
     delete_success: '記録を削除しました'
     create_success: '記録を登録しました'
     update_success: '記録を更新しました'
+    access_denied: 'アクセス権限がありません'
   static_pages:
     top:
       title: 'トップページ'
@@ -75,6 +78,12 @@ ja:
     destroy:
       success: 'グループを削除しました'
       error: 'グループの削除に失敗しました'
+  invitees:
+    invitations:
+      new:
+        title: 'メンバー招待'
+        success: '招待しました'
+        error: '招待に失敗しました'
   simple_calendar:
     previous: "<<"
     next: ">>"

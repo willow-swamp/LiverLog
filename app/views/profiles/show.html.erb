@@ -27,7 +27,7 @@
 
         </div>
         <div class="w-full">
-          <p class=""><%= t 'defaults.group' %></p>
+          <p class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.group' %></p>
           <% if @user.groups.present? %>
             <%= render partial: 'profiles/groups', locals: { user: @user } %>
           <% else %>
@@ -39,7 +39,7 @@
             <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false } %>
           </div>
         </div>
-        <div><%= t 'defaults.record' %></div>
+        <div class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.record' %></div>
         <div class="stats stats-vertical my-2 w-full bg-accent-content shadow sm:stats-horizontal md:stats-vertical">
           <div class="stat">
             <div class="stat-title"><%= t '.no_alcohol_day_achievement' %></div>

@@ -1,0 +1,2 @@
+module Invitees::OauthsHelper
+end

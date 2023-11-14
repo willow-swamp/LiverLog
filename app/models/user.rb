@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :comment, length: { maximum: 256 }
   validates :non_drinking_days, presence: true
 
+  enum role: { general: 0, invitee: 10, admin: 20 }
+
   def monthly_no_drink_day_records
     self.drink_records.no_drink.where(start_time: Date.today.all_month).count
   end
