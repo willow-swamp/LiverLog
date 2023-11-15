@@ -1,4 +1,4 @@
-# 肝ログ　（LiverLog）
+![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/c755c453-e354-4d30-99e0-7727d67c5b2f)# 肝ログ　（LiverLog）
 
 ## サービス概要
 肝ログ（LiverLog）は、休肝日と飲酒日を記録することで、飲酒管理ができるサービスです。
@@ -72,4 +72,4 @@
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
 
 ### ER図
-![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/1e010f72-b75d-4489-a55d-259a77bb3083)
+![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/5b0bb8ac-b4b6-4eab-8a6f-d10f1b64b360)
