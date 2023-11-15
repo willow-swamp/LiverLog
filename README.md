@@ -1,4 +1,4 @@
-![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/c755c453-e354-4d30-99e0-7727d67c5b2f)# 肝ログ　（LiverLog）
+# 肝ログ　（LiverLog）
 
 ## サービス概要
 肝ログ（LiverLog）は、休肝日と飲酒日を記録することで、飲酒管理ができるサービスです。
