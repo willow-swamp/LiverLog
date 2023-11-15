@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
   has_many :user_groups, dependent: :destroy
   has_many :users, through: :user_groups
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true
   validates :group_admin_id, presence: true
