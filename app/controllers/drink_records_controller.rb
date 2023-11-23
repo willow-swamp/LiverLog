@@ -12,6 +12,7 @@ class DrinkRecordsController < ApplicationController
   def create
     @drink_record = current_user.drink_records.new(drink_record_params)
     if @drink_record.save
+      @drink_record.create_post
       redirect_to profile_path, success: t('defaults.create_success')
     else
       flash.now[:error] = @drink_record.errors.full_messages.join(', ')

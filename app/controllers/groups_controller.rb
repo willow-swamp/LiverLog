@@ -19,7 +19,10 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    start_date = params.fetch(:start_time, Date.today).to_date
+    @drink_record = @group.group_admin.drink_records.all
+  end
 
   def edit; end
 

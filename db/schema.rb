@@ -56,20 +56,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_130043) do
 
   create_table "post_likes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_post_likes_on_group_id"
-    t.index ["user_id", "group_id"], name: "index_post_likes_on_user_id_and_group_id", unique: true
+    t.index ["post_id"], name: "index_post_likes_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_post_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_post_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
+    t.bigint "drink_record_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["drink_record_id"], name: "index_posts_on_drink_record_id"
     t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -100,8 +102,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_130043) do
   add_foreign_key "groups", "users", column: "group_admin_id"
   add_foreign_key "post_comments", "posts"
   add_foreign_key "post_comments", "users"
-  add_foreign_key "post_likes", "groups"
+  add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
+  add_foreign_key "posts", "drink_records"
   add_foreign_key "posts", "groups"
   add_foreign_key "posts", "users"
   add_foreign_key "user_groups", "groups"

@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get 'first_login', to: 'static_pages#first_login'
   patch 'first_login', to: 'static_pages#update'
   put 'first_login', to: 'static_pages#update'
-  resources :users, only: [:edit, :update, :show]
+  # resources :users, only: [:edit, :update, :show]
   resource :profile, only: [:edit, :update, :show]
   resources :drink_records, only: [:new, :create, :show, :edit, :update, :destroy]
-  resources :groups, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :posts, only: [:create, :show]
+  end
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'
