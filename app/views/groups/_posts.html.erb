@@ -1,0 +1,22 @@
+<% if group.posts.present? %>
+  <% group.posts.each do |post| %>
+    <div class="flex flex-row card rounded-box bg-white shadow-xl w-full mt-4 p-4">
+      <div class="avatar">
+        <div class="h-12 w-12 rounded-full">
+          <%= image_tag post.user.image %>
+        </div>
+      </div>
+      <div class="pl-6">
+        <div class="flex flex-row">
+          <div class="font-bold"><%= post.user.username %></div>
+          <div class="ml-4 text-neutral-300"><%= post.drink_record.start_time.strftime("%F") %></div>
+        </div>
+        <div class="text-neutral-900"><%= post.content %></div>
+      </div> 
+    </div>
+  <% end %>
+<% else %>
+  <div class="card rounded-box flex-col bg-white shadow-xl w-full my-8">
+    <%= t '.no_post' %>
+  </div>
+<% end %>

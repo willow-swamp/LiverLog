@@ -68,6 +68,7 @@ ja:
       admin: '管理者'
       member: 'メンバー'
       invite: 'メンバーを招待'
+      no_post: '投稿なし'
     edit:
       title: 'グループ編集'
       success: 'グループを更新しました'
