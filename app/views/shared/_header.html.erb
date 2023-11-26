@@ -5,7 +5,6 @@
   <div class="navbar-end">
     <ul class="menu menu-horizontal invisible px-1 md:visible">
       <li><a><%= t 'defaults.community' %></a></li>
-      <li><a><%= t 'defaults.group' %></a></li>
     </ul>
     <%= link_to t('defaults.record'), new_drink_record_path, class: 'btn btn-accent', data: { turbo: false } %>
     <div class="dropdown dropdown-end">
@@ -20,7 +19,6 @@
             <%= link_to t('defaults.my_page'), profile_path %>
           </li>
           <li class="md:hidden"><a><%= t 'defaults.community' %></a></li>
-          <li class="md:hidden"><a><%= t 'defaults.group' %></a></li>
         </ul>
       </div>
     </div>
