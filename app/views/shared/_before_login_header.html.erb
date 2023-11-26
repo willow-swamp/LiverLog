@@ -7,13 +7,15 @@
       <li><a><%= t 'defaults.top_page' %></a></li>
       <li><a><%= t 'defaults.community' %></a></li>
     </ul>
-    <%= link_to t('defaults.login_with_line'), auth_at_provider_path(provider: :line), class: "btn btn-primary" %>
+    <%= link_to auth_at_provider_path(provider: :line), class: "inline-block" do %>
+        <%= image_tag "btn_login_base.png" %>
+    <% end %>
   </div>
   <div class="dropdown dropdown-end md:hidden">
     <div class="flex-none md:hidden">
-      <button class="btn btn-square btn-ghost">
-       ･･･ 
-      </button>
+      <label tabindex="0" class="btn btn-square btn-ghost">
+        <i class="fa fa-bars"></i> 
+      </label>
       <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-32">
         <li><a><%= t 'defaults.top_page' %></a></li>
         <li><a><%= t 'defaults.community' %></a></li>
