@@ -1,0 +1,9 @@
+<div class="divider"></div>
+<ul class='crud-menu-btn list-none'>
+  <li class="inline-block mr-2">
+    <%= link_to '#', id: "button-like-#{post.id}" do %>
+      <i class="fa-regular fa-thumbs-up fa-lg"></i>
+    <% end %>
+    <%= post.post_likes.count %>
+  </li>
+</ul> 

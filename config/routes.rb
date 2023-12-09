@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resource :profile, only: [:edit, :update, :show]
   resources :drink_records, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
-    resources :posts, only: [:create, :show]
+    resources :posts, only: [:create, :show] do
+      resources :post_comments, only: [:create, :show, :destroy], shallow: true
+    end
   end
 
   post 'oauth/callback', to: 'oauths#callback'

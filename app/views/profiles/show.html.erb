@@ -11,7 +11,7 @@
           </div>
           <div class="pl-6">
             <div>
-            <h2 class="title-font text-xl font-semibold text-neutral-900"><%= @user.username %></h2>
+              <h2 class="title-font text-xl font-semibold text-neutral-900"><%= @user.username %></h2>
               <p><%= t '.no_alcohol_day' %></p>
               <% @user.non_drinking_days.each do |index| %>
                 <div class="badge badge-primary"><%= I18n.t('date.day_names')[index] %></div>

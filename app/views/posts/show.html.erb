@@ -1,2 +1,47 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<% content_for(:title, @post.drink_record.start_time.strftime("%F") + t(".title")) %>
+<div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
+  <div class="max-w-full mx-auto sm:px-4 pt-5">
+    <div class="flex flex-row mb-3">
+      <div class="px-4">
+        <!-- 掲示板内容 -->
+        <article class="flex flex-col min-w-full rounded break-words border bg-white border-gray-300">
+          <div class="flex-auto p-6">
+            <div class='flex flex-row'>
+              <div class="avatar">
+                <div class="h-12 w-12 rounded-full">
+                  <%= image_tag @post.user.image %>
+                </div>
+              </div>
+              <div class='pl-4'>
+                <div class="font-bold text-xl"><%= @post.user.username %></div>
+                  <div class="flex-row"><%= t '.no_alcohol_day' %>: 
+                    <% @post.user.non_drinking_days.each do |index| %>
+                      <div class="badge badge-primary"><%= I18n.t('date.day_names')[index] %></div>
+                    <% end %>
+                  </div>
+              </div>
+            </div>
+            <div class="my-4 text-neutral-900 text-xl"><%= @post.content %></div>
+            <ul class="list-none">
+              <li class="inline-block mr-2 text-neutral-300"><%= @post.drink_record.start_time.strftime("%F") %></li>
+            </ul>
+          <%= render 'shared/like_btn', { post: @post } %>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- コメントフォーム -->
+    <div class="px-4">
+      <%= render 'post_comments/form', { group: @group, post: @post, comment: @post_comment } %>
+    </div>
+
+    <!-- コメントエリア -->
+    <% if @post_comments.present? %>
+      <div class="divider"></div>
+      <div class="px-4">
+        <%= render 'post_comments/comments', { comments: @post_comments } %>
+      </div>
+    <% end %>
+  </div>
+</div>
