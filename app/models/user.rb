@@ -70,4 +70,8 @@ class User < ApplicationRecord
   def liked_post?(post)
     liked_posts.include?(post)
   end
+
+  def own?(object)
+    id == object.user_id
+  end
 end

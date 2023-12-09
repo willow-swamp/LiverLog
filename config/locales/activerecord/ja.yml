@@ -20,6 +20,10 @@ ja:
         alcohol_percentage: 'アルコール度数'
       group:
         name: 'グループ名'
+      post_comment:
+        user_id: 'ユーザーID'
+        post_id: '投稿ID'
+        message: 'コメント'
   enums:
     drink_record:
       record_type:

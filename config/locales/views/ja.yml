@@ -23,6 +23,10 @@ ja:
     create_success: '記録を登録しました'
     update_success: '記録を更新しました'
     access_denied: 'アクセス権限がありません'
+    post: '投稿'
+    comment_success: 'コメントしました'
+    comment_error: 'コメントに失敗しました'
+    comment_delete: 'コメントを削除しました'
   static_pages:
     top:
       title: 'トップページ'
@@ -79,6 +83,10 @@ ja:
     destroy:
       success: 'グループを削除しました'
       error: 'グループの削除に失敗しました'
+  posts:
+    show:
+      title: 'ポスト'
+      no_alcohol_day: '休肝日'
   invitees:
     invitations:
       new:
