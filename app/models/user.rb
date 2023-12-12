@@ -1,13 +1,14 @@
 class User < ApplicationRecord
+  before_destroy :destroy_related_groups
+
   authenticates_with_sorcery!
   has_many :authentications, dependent: :destroy
   has_many :drink_records, dependent: :destroy
   has_many :user_groups, dependent: :destroy
-  has_many :groups, through: :user_groups, dependent: :destroy
+  has_many :groups, through: :user_groups
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
-  has_many :liked_posts, through: :post_likes, source: :post, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates :username, presence: true
@@ -73,5 +74,11 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+
+  private
+
+  def destroy_related_groups
+    Group.where(group_admin_id: self.id).destroy_all
   end
 end
