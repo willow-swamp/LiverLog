@@ -15,6 +15,10 @@ class Group < ApplicationRecord
     User.find(self.group_admin_id)
   end
 
+  def group_admin?(user)
+    user == self.group_admin
+  end
+
   def set_invite_token
     self.invite_token = SecureRandom.hex(16)
   end

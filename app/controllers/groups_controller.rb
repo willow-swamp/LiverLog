@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
   def show
     start_date = params.fetch(:start_time, Date.today).to_date
     @drink_record = @group.group_admin.drink_records.all
+    @admin_user = @group.group_admin
   end
 
   def edit; end
@@ -48,6 +49,6 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = current_user.groups.find(params[:id])
+    @group = Group.find(params[:id])
   end
 end

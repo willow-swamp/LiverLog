@@ -1,4 +1,6 @@
 class PostCommentsController < ApplicationController
+  skip_before_action :require_general, only: %i[create destroy]
+
   def create
     comment = current_user.post_comments.new(post_comment_params)
     if comment.save
