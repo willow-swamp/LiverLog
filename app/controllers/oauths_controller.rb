@@ -16,10 +16,21 @@ class OauthsController < ApplicationController
       end
     else
       begin
-        @user = create_from(provider)
-        reset_session
-        auto_login(@user)
-        redirect_to first_login_path, success: t('defaults.login_success')
+        if session[:invite_token].present?
+          @user = create_from(provider)
+          @user.role = :invitee
+          group = Group.find_by(invite_token: session[:invite_token])
+          binding.pry
+          group.save_group_member(@user)
+          reset_session
+          auto_login(@user)
+          redirect_to invitees_invitation_first_login_path, success: t('defaults.login_success')
+        else
+          @user = create_from(provider)
+          reset_session
+          auto_login(@user)
+          redirect_to first_login_path, success: t('defaults.login_success')
+        end
       rescue
         redirect_to root_path, error: t('defaults.login_failed')
       end

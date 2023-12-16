@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
+  before_action :authorize_group, only: %i[show edit update destroy]
   skip_before_action :require_general, only: %i[show]
 
   def new
@@ -22,6 +23,7 @@ class GroupsController < ApplicationController
   def show
     start_date = params.fetch(:start_time, Date.today).to_date
     @drink_record = @group.group_admin.drink_records.all
+    @admin_user = @group.group_admin
   end
 
   def edit; end
@@ -48,6 +50,10 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = current_user.groups.find(params[:id])
+    @group = Group.find(params[:id])
+  end
+
+  def authorize_group
+    redirect_to group_path(current_user.groups.first), warning: t('defaults.access_denied') unless @group.users.exists?(current_user.id)
   end
 end

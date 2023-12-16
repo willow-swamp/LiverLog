@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
+  skip_before_action :require_general, only: %i[show]
 
   def show
     @group = @post.group

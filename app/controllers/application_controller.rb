@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_general
-    redirect_to profile_path, warning: t('defaults.access_denied') unless current_user.general?
+    redirect_to group_path(current_user.groups.first), warning: t('defaults.access_denied') unless current_user.general?
   end
 end
