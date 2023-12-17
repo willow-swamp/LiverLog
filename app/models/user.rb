@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
+  has_many :liked_posts, through: :post_likes, source: :post
   accepts_nested_attributes_for :authentications
 
   validates :username, presence: true
@@ -60,15 +61,15 @@ class User < ApplicationRecord
     (self.monthly_total_amount_alcohol.to_f - self.last_manth_total_amount_alcohol.to_f).round(1)
   end
 
-  def liked_post(post)
+  def like_post(post)
     liked_posts << post
   end
 
-  def unliked_post(post)
+  def unlike_post(post)
     liked_posts.delete(post)
   end
 
-  def liked_post?(post)
+  def like_post?(post)
     liked_posts.include?(post)
   end
 

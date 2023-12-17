@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
-  skip_before_action :require_general, only: %i[show]
+  skip_before_action :require_general, only: %i[show likes]
 
   def show
     @group = @post.group
