@@ -21,9 +21,26 @@
             <li>
               <%= link_to t('defaults.my_page'), profile_path %>
             </li>
+            <li>
+              <%= t('defaults.group') %>
+              <ul>
+                <% current_user.groups.each do |group| %>
+                  <li>
+                    <%= link_to group.name, group_path(group) %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
           <% elsif current_user.invitee? %>
             <li>
-              <%= link_to t('defaults.group'), group_path(current_user.groups.first) %>
+              <%= t('defaults.group') %>
+              <ul>
+                <% current_user.groups.each do |group| %>
+                  <li>
+                    <%= link_to group.name, group_path(group) %>
+                  </li>
+                <% end %>
+              </ul>
             </li>
           <% end %>
           <li class="md:hidden"><a><%= t 'defaults.community' %></a></li>

@@ -95,4 +95,8 @@
   .current-month {}
   
   .has-events {}
+
+  .text-tiny {
+    font-size: 0.4rem;
+  }
 }

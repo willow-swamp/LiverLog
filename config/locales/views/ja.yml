@@ -89,7 +89,7 @@ ja:
       title: 'ポスト'
       no_alcohol_day: '休肝日'
   invitees:
-    invitations:
+    invitation:
       new:
         title: 'メンバー招待'
         success: '招待しました'

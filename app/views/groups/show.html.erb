@@ -75,9 +75,9 @@
             <div><%= date.day %></div>
             <% drink_record.each do |record| %>
               <% if record.no_drink? %>
-                <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md", data: { turbo: false } %>
+                <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
               <% elsif record.drink? %>
-                <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md", data: { turbo: false } %>
+                <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
               <% end %>
             <% end %>
           <% end %>
