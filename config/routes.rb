@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :posts, only: [:create, :show] do
       resources :post_comments, only: [:create, :show, :destroy], shallow: true
+      member do
+        resources :likes, only: [:create, :destroy]
+      end
     end
   end
 
