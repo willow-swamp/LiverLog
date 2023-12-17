@@ -1,0 +1,18 @@
+<div class="stats stats-vertical my-2 w-full bg-accent-content shadow md:stats-horizontal md:grid-cols-2">
+  <div class="stat">
+    <div class="stat-title"><%= t 'defaults.no_alcohol_day_achievement' %></div>
+    <div class="stat-value"><%= user.monthly_no_drink_achievement %>%</div>
+    <div class="stat-desc"><%= Date.today.beginning_of_month %> - <%= Date.today%></div>
+  </div>
+  <div class="stat">
+    <div class="stat-title"><%= t 'defaults.alcohol_intake' %></div>
+    <div class="stat-value"><%= user.monthly_total_amount_alcohol %>ml</div>
+    <% if user.compare_amount_last_manth_total_amount_alcohol > 0 %>
+      <div class="stat-desc">↗︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+    <% elsif user.compare_amount_last_manth_total_amount_alcohol < 0 %>
+      <div class="stat-desc">↘︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+    <% else %>
+      <div class="stat-desc">- <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+    <% end %>
+  </div>
+</div>
