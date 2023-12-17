@@ -6,6 +6,6 @@
     <% else %>
       <%= render 'shared/like', { post: post } %>
     <% end %>
-    <%= post.post_likes.count %>
+    <%= t('defaults.likes') %>:<%= post.post_likes.count %>
   </li>
 </ul> 
