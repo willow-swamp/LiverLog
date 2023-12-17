@@ -27,6 +27,8 @@ ja:
     comment_success: 'コメントしました'
     comment_error: 'コメントに失敗しました'
     comment_delete: 'コメントを削除しました'
+    no_alcohol_day_achievement: '休肝日達成率（今月）'
+    alcohol_intake: '総アルコール摂取量（今月）'
   static_pages:
     top:
       title: 'トップページ'
@@ -43,8 +45,6 @@ ja:
       title: 'マイページ'
       no_alcohol_day: '休肝日'
       create_group: 'グループを作成'
-      no_alcohol_day_achievement: '休肝日達成率（今月）'
-      alcohol_intake: '総アルコール摂取量（今月）'
       no_group: 'グループなし'
   drink_records:
     new:
@@ -67,8 +67,6 @@ ja:
       edit: 'グループ編集'
       delete: 'グループ削除'
       no_alcohol_day: '休肝日'
-      no_alcohol_day_achievement: '休肝日達成率（今月）'
-      alcohol_intake: '総アルコール摂取量（今月）'
       group_name: 'グループ名'
       admin: '管理者'
       member: 'メンバー'
@@ -89,7 +87,7 @@ ja:
       title: 'ポスト'
       no_alcohol_day: '休肝日'
   invitees:
-    invitations:
+    invitation:
       new:
         title: 'メンバー招待'
         success: '招待しました'

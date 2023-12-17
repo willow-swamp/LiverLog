@@ -19,13 +19,11 @@
             </div>
           </div>
         </div>
-
         <div class="flex-grow py-4 pl-4">
           <p><%= @user.comment %></p>
           <div class="text-right">
             <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs" %>
           </div>
-
         </div>
         <div class="w-full">
           <p class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.group' %></p>
@@ -41,25 +39,7 @@
           </div>
         </div>
         <div class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.record' %></div>
-        <div class="stats stats-vertical my-2 w-full bg-accent-content shadow sm:stats-horizontal md:stats-vertical">
-          <div class="stat">
-            <div class="stat-title"><%= t '.no_alcohol_day_achievement' %></div>
-            <div class="stat-value"><%= @user.monthly_no_drink_achievement %>%</div>
-            <div class="stat-desc"><%= Date.today.beginning_of_month %> - <%= Date.today%></div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-title"><%= t '.alcohol_intake' %></div>
-            <div class="stat-value"><%= @user.monthly_total_amount_alcohol %>ml</div>
-            <% if @user.compare_amount_last_manth_total_amount_alcohol > 0 %>
-              <div class="stat-desc">↗︎ <%= @user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= @user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
-            <% elsif @user.compare_amount_last_manth_total_amount_alcohol < 0 %>
-              <div class="stat-desc">↘︎ <%= @user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= @user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
-            <% else %>
-              <div class="stat-desc">- <%= @user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= @user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'shared/drink_record_summary', { user: @user } %>
       </div>
     </div>
   </div>
@@ -71,9 +51,9 @@
           <div><%= date.day %></div>
           <% drink_record.each do |record| %>
             <% if record.no_drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md", data: { turbo: false } %>
+              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
             <% elsif record.drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md", data: { turbo: false } %>
+              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
             <% end %>
           <% end %>
         <% end %>
