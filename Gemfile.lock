@@ -156,6 +156,7 @@ GEM
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     jwt (2.7.1)
+    line-bot-api (1.28.0)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -316,6 +317,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsbundling-rails
+  line-bot-api
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
