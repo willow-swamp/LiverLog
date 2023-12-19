@@ -4,8 +4,8 @@ namespace :line_push do
     require 'line/bot'
 
     message = {
-      type: 'text',
-      text: '今日は休肝日です！'
+      type: "text",
+      text: "今日は休肝日です！肝ログにアクセスして休肝日を記録しましょう！ #{Settings.page_url[:page_url]}/profile"
     }
 
     client ||= Line::Bot::Client.new { |config|
@@ -16,7 +16,7 @@ namespace :line_push do
 
     reminder_users = User.where(reminder: true)
     reminder_users.each do |user|
-      if user.non_drink_days.include?(Date.today.wday)
+      if user.non_drinking_days&.include?(Date.today.wday)
         client.push_message(user.authentications.first.uid, message)
       end
     end
