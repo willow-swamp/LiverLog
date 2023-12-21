@@ -223,10 +223,10 @@ Rails.application.config.sorcery.configure do |config|
   config.line.secret = Rails.application.credentials.dig(:line, :channel_secret)
   config.line.callback_url = Settings.sorcery[:line_callback_url]
   config.line.scope = "profile openid"
-  config.line.bot_prompt = "normal"
+  config.line.bot_prompt = "aggressive"
   config.line.user_info_mapping = {username: 'displayName', image: 'pictureUrl'}
 
-  
+
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
   # config.discord.key = "xxxxxx"

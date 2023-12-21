@@ -24,10 +24,12 @@
             <li>
               <%= t('defaults.group') %>
               <ul>
-                <% current_user.groups.each do |group| %>
-                  <li>
-                    <%= link_to group.name, group_path(group) %>
-                  </li>
+                <% if current_user.groups.exists? %>
+                  <% current_user.groups.each do |group| %>
+                    <li>
+                      <%= link_to group.name, group_path(group) %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
             </li>

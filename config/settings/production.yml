@@ -1,2 +1,4 @@
 sorcery:
   line_callback_url: 'https://liverlog.fly.dev/oauth/callback?provider=line'
+page_url:
+  page_url: 'https://liverlog.fly.dev'
