@@ -5,6 +5,7 @@ ja:
     login_with_line: 'LINEでログイン'
     login_success: 'ログインしました'
     login_failed: 'ログインに失敗しました'
+    not_authenticated: 'ログインしてください'
     group: 'グループ'
     my_page: 'マイページ'
     record: '記録'
@@ -32,6 +33,7 @@ ja:
     likes: 'いいね！'
     like_post: 'いいね！しました'
     unlike_post: 'いいね！を取り消しました'
+    already_logged_in: 'すでにログインしています'
   static_pages:
     top:
       title: 'トップページ'

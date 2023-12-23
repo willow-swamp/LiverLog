@@ -1,6 +1,7 @@
 class OauthsController < ApplicationController
   skip_before_action :require_login
   skip_before_action :require_general
+  before_action :already_logged_in, only: [:oauth, :callback]
 
   def oauth
     login_at(params[:provider])
@@ -9,7 +10,7 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      if @user.general?
+      if @user.general? || @user.admin?
         redirect_to profile_path, success: t('defaults.login_success')
       elsif @user.invitee?
         redirect_to group_path(@user.groups.first), success: t('defaults.login_success')
@@ -35,5 +36,11 @@ class OauthsController < ApplicationController
         redirect_to root_path, error: t('defaults.login_failed')
       end
     end
+  end
+
+  private
+
+  def already_logged_in
+    redirect_to profile_path, warning: t('defaults.already_logged_in') if logged_in?
   end
 end
