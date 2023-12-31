@@ -49,7 +49,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem 'cssbundling-rails'
-gem 'jsbundling-rails'
+# gem 'jsbundling-rails'
 
 gem 'sorcery'
 gem 'pry-rails'
