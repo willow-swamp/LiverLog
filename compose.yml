@@ -24,6 +24,11 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome
+  chrome:
+    image: seleniarm/standalone-chromium
+    ports:
+      - 4444:4444
 volumes:
   postgres_data:
   bundle_data:
