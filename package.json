@@ -3,20 +3,16 @@
   "private": "true",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
+    "@hotwired/stimulus": "^3.2.2",
     "autoprefixer": "^10.4.15",
-    "daisyui": "^3.7.5",
-    "esbuild": "^0.19.4",
-    "postcss": "^8.4.31",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-import": "^15.1.0",
-    "postcss-nested": "^6.0.1",
+    "daisyui": "^4.4.24",
     "rails_admin": "^3.1.2",
-    "sass": "^1.69.5",
+    "sass": "^1.69.6",
     "tailwindcss": "^3.3.3"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify && sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css ./app/assets/stylesheets/rails_admin.scss:./app/assets/builds/rails_admin.css --no-source-map --load-path=node_modules",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build:sass": "sass ./app/assets/stylesheets/rails_admin.scss ./app/assets/builds/rails_admin.css --no-source-map --load-path=node_modules"
   },
   "packageManager": "yarn@1.22.19"
 }
