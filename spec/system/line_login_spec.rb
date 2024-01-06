@@ -2,9 +2,22 @@ require 'rails_helper'
 
 RSpec.describe 'User Login with LINE via OauthsController', type: :system do
   before do
-    # SorceryのOAuth認証プロセスを模倣する
-    allow_any_instance_of(OauthsController).to receive(:login_at).and_return(mocked_auth_hash)
-    allow_any_instance_of(OauthsController).to receive(:create_from).and_return(mocked_user)
+    # LINE認証のレスポンスを模倣
+    # WebMock.stub_request(:post, "https://api.line.me/oauth2/v2.1/token")
+    #   .to_return(
+    #     status: 200,
+    #     body: { access_token: "mock_access_token", token_type: "Bearer" }.to_json,
+    #     headers: { 'Content-Type' => 'application/json' }
+    #   )
+
+    # # その他必要なAPI呼び出しを模倣
+    # # 例: ユーザー情報取得API
+    # WebMock.stub_request(:get, "https://api.line.me/v2/profile")
+    #   .to_return(
+    #     status: 200,
+    #     body: { userId: "mock_user_id", displayName: "mock_user" }.to_json,
+    #     headers: { 'Content-Type' => 'application/json' }
+    #   )
   end
 
   it 'allows a user to log in with LINE' do

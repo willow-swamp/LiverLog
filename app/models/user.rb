@@ -14,7 +14,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }
-  validates :non_drinking_days, presence: true, if: :general?
+  validates :non_drinking_days, presence: true, if: -> { self.role == 'general' || self.role == 'admin' }
+  validates :role, presence: true
+  validates :reminder, inclusion: { in: [true, false] }
+  validates :first_login, inclusion: { in: [true, false] }
 
   enum role: { general: 0, invitee: 10, admin: 20 }
 

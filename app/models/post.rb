@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   has_many :post_likes, dependent: :destroy
 
   validates :id, uniqueness: { scope: :group_id }
+  validates :content, length: { maximum: 256 }
 end

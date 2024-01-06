@@ -5,7 +5,7 @@ RSpec.describe "休肝日&飲酒日を記録する", type: :system do
 
   describe "休肝日を記録する" do
     before do
-    login_as(user)
+    login_line(user)
     click_link "drink-record-btn"
     end
 
