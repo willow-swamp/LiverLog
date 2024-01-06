@@ -30,6 +30,14 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+# WebMock.disable_net_connect!(allow: [
+#   lambda{|uri| uri.host.length % 2 == 0 },
+#   /chrome:4444/,
+#   /web:/,
+# ])
+# WebMock.disable_net_connect!(allow_localhost: true, allow: %r{http://chrome:4444/wd/hub/session}, allow: %r{http://web:})
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join('spec/fixtures')
@@ -63,8 +71,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
-  config.include LoginMacros
-  config.include Sorcery::TestHelpers::Rails::Controller
+  # config.include LoginMacros
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Request, type: :request
-  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
+  config.include Sorcery::TestHelpers::Rails::Integration, type: :system
 end

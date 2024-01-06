@@ -15,5 +15,7 @@ FactoryBot.define do
 
   trait :invitee do
     role { :invitee }
+    comment { nil }
+    non_drinking_days { nil }
   end
 end
