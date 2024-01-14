@@ -86,6 +86,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "rubocop", require: false
 end
 
 group :test do
@@ -94,6 +95,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webmock"
   gem "rack_session_access"
+  gem "simplecov", require: false
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
