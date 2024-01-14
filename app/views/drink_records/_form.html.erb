@@ -1,12 +1,16 @@
 <%= form_with model: drink_record, local: true do |f| %>
   <div class="flex flex-col items-center justify-evenly md:flex-row md:content-evenly">
-    <%= f.radio_button :record_type, "no_drink", class: "btn btn-primary btn-outline join-item m-4 px-12 js-check", "aria-label": :"休肝日", id: "hide" %>
-    <%= f.radio_button :record_type, "drink", class: "btn btn-secondary btn-outline join-item m-4 px-12 js-check", "aria-label": :"飲酒日" , id: "disp" %>
+    <%= f.radio_button :record_type, "no_drink", class: "btn btn-primary btn-outline join-item m-4 px-12 js-check", "aria-label": :"休肝日", id: "no-drink-radio" %>
+    <%= f.radio_button :record_type, "drink", class: "btn btn-secondary btn-outline join-item m-4 px-12 js-check", "aria-label": :"飲酒日" , id: "drink-radio" %>
   </div>
   <div class="md:p-8 p-4">
     <div class="form-control mb-4 flex w-full flex-row items-center">
       <%= f.label :start_time, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-      <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: Date.today.strftime("%Y-%m-%d") %>
+      <% if drink_record.start_time.present? %>
+        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: drink_record.start_time.strftime("%Y-%m-%d") %>
+      <% else %>
+        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: Date.today.strftime("%Y-%m-%d") %>
+      <% end %>
     </div>
   </div>
   <div id="drink-details">

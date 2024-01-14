@@ -93,6 +93,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webmock"
+  gem "rack_session_access"
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development

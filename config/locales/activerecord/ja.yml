@@ -15,7 +15,7 @@ ja:
         user_id: 'ユーザーID'
         record_type: '記録の種類'
         start_time: '記録日'
-        drink_type: '飲酒の種類'
+        drink_type: 'お酒の種類'
         drink_volume: '飲酒量'
         alcohol_percentage: 'アルコール度数'
       group:

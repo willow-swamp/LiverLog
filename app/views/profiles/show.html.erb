@@ -22,7 +22,7 @@
         <div class="flex-grow py-4 pl-4">
           <p><%= @user.comment %></p>
           <div class="text-right">
-            <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs" %>
+            <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs", id:"edit-profile" %>
           </div>
         </div>
         <div class="w-full">
@@ -35,7 +35,7 @@
             </div>
           <% end %>
           <div class="text-right">
-            <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false } %>
+            <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false }, id: "new-group" %>
           </div>
         </div>
         <div class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.record' %></div>

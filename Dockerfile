@@ -15,6 +15,16 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
 && apt-get update -qq \
 && apt-get install -y build-essential libpq-dev nodejs yarn vim
+
+RUN apt-get update \
+&& apt-get install -y chromium
+
+RUN CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE) \
+&& wget -N http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip -P ~/ \
+&& unzip ~/chromedriver_linux64.zip -d ~/ \
+&& mv ~/chromedriver /usr/local/bin/ \
+&& rm ~/chromedriver_linux64.zip
+
 RUN mkdir /app
 WORKDIR /app
 RUN gem install bundler

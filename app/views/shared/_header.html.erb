@@ -1,6 +1,10 @@
 <div class="navbar from-primary to-secondary bg-gradient-to-r sticky top-0 z-10">
   <div class="flex-1">
-    <div class="mx-4 text-xl font-bold">肝ログ</div>
+    <% if current_user.general? || current_user.admin? %>
+      <%= link_to "肝ログ", profile_path, class: "block mx-4 text-xl font-bold" %>
+    <% elsif current_user.invitee? %>
+      <div class="mx-4 text-xl font-bold">肝ログ</div>
+    <% end %>
   </div>
   <div class="navbar-end">
     <ul class="menu menu-horizontal invisible px-1 md:visible">
@@ -26,9 +30,11 @@
               <ul>
                 <% if current_user.groups.exists? %>
                   <% current_user.groups.each do |group| %>
-                    <li>
-                      <%= link_to group.name, group_path(group) %>
-                    </li>
+                    <% if group.persisted? %>
+                      <li>
+                        <%= link_to group.name, group_path(group) %>
+                      </li>
+                    <% end %>
                   <% end %>
                 <% end %>
               </ul>

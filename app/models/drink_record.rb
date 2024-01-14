@@ -19,7 +19,7 @@ class DrinkRecord < ApplicationRecord
         if self.record_type == "no_drink"
           group.posts.create!(user_id: @user.id, group_id: group.id, drink_record_id: self.id, content: "#{@user.username}さんが休肝日を達成しました！！")
         else
-          group.posts.create!(user_id: @user.id, group_id: group.id, drink_record_id: self.id, content: "#{@user.username}さんがお酒を嗜みました🍺（今日のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(self.drink_volume, self.alcohol_percentage)}g)")
+          group.posts.create!(user_id: @user.id, group_id: group.id, drink_record_id: self.id, content: "#{@user.username}さんがお酒を嗜みました🍺（今日のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(self.drink_volume, self.alcohol_percentage)}g）")
         end
       end
     end
