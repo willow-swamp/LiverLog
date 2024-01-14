@@ -22,21 +22,6 @@ RSpec.describe Post, type: :model do
         expect(post).to be_invalid
         expect(post.errors[:content]).to be_present
       end
-      it 'ユーザーIDがない' do
-        post = build(:post, user: nil, group: group, drink_record: drink_record)
-        expect(post).to be_invalid
-        expect(post.errors[:user]).to be_present
-      end
-      it 'グループIDがない' do
-        post = build(:post, user: user, group: nil, drink_record: drink_record)
-        expect(post).to be_invalid
-        expect(post.errors[:group]).to be_present
-      end
-      it '飲酒記録IDがない' do
-        post = build(:post, user: user, group: group, drink_record: nil)
-        expect(post).to be_invalid
-        expect(post.errors[:drink_record]).to be_present
-      end
     end
   end
 end

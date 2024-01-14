@@ -13,9 +13,9 @@ class DrinkRecordsController < ApplicationController
     @drink_record = current_user.drink_records.new(drink_record_params)
     if @drink_record.save
       @drink_record.create_post
-      redirect_to profile_path, success: t('defaults.create_success')
+      redirect_to drink_record_path(@drink_record), success: t('defaults.create_success')
     else
-      flash.now[:error] = @drink_record.errors.full_messages.join(', ')
+      flash.now[:error] = t 'defaults.record_error'
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,7 +29,7 @@ class DrinkRecordsController < ApplicationController
   def update
     @drink_record.assign_attributes(drink_record_params)
     if @drink_record.save
-      redirect_to profile_path, success: t('defaults.update_success')
+      redirect_to drink_record_path(@drink_record), success: t('defaults.update_success')
     else
       flash.now[:error] = t 'defaults.record_error'
       render :edit, status: :unprocessable_entity

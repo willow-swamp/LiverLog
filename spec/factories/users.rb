@@ -14,6 +14,7 @@ FactoryBot.define do
   end
 
   trait :invitee do
+    sequence(:username) { |n| "invitee#{n}" }
     role { :invitee }
     comment { nil }
     non_drinking_days { nil }
