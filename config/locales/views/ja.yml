@@ -11,6 +11,7 @@ ja:
     record: '記録'
     terms_of_service: '利用規約'
     privacy_policy: 'プライバシーポリシー'
+    contact: 'お問い合わせ'
     register: '登録'
     detail: '詳細'
     edit: '編集'
@@ -41,6 +42,10 @@ ja:
       title: 'ユーザー情報登録'
       form_title: 'プロフィール&休肝日設定'
       form_description: 'プロフィールと休肝日を登録しよう！'
+    terms_of_service:
+      title: '利用規約'
+    privacy_policy:
+      title: 'プライバシーポリシー'
   users:
     new:
   profiles:
