@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root "static_pages#top"
+  root 'static_pages#top'
+  get 'terms_of_service', to: 'static_pages#terms_of_service'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'first_login', to: 'static_pages#first_login'
   patch 'first_login', to: 'static_pages#update'
   put 'first_login', to: 'static_pages#update'
   # resources :users, only: [:edit, :update, :show]
-  resource :profile, only: [:edit, :update, :show]
-  resources :drink_records, only: [:new, :create, :show, :edit, :update, :destroy]
-  resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
-    resources :posts, only: [:create, :show] do
-      resources :post_comments, only: [:create, :show, :destroy], shallow: true
+  resource :profile, only: %i[edit update show]
+  resources :drink_records, only: %i[new create show edit update destroy]
+  resources :groups, only: %i[new create show edit update destroy] do
+    resources :posts, only: %i[create show] do
+      resources :post_comments, only: %i[create show destroy], shallow: true
       member do
-        resources :likes, only: [:create, :destroy]
+        resources :likes, only: %i[create destroy]
       end
     end
   end

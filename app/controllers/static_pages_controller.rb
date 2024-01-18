@@ -1,12 +1,16 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, only: [:top]
-  skip_before_action :require_general, only: [:top]
-  before_action :set_user, only: [:first_login, :update]
-  before_action :first_login?, only: [:first_login, :update]
+  skip_before_action :require_login, only: %i[top first_login terms_of_service privacy_policy]
+  skip_before_action :require_general, only: %i[top first_login terms_of_service privacy_policy]
+  before_action :set_user, only: %i[first_login update]
+  before_action :first_login?, only: %i[first_login update]
 
   def top; end
 
   def first_login; end
+
+  def terms_of_service; end
+
+  def privacy_policy; end
 
   def update
     user_params_with_days = user_params
@@ -26,9 +30,9 @@ class StaticPagesController < ApplicationController
   end
 
   def first_login?
-    if !@user.first_login
-      redirect_to profile_path, warning: '既にプロフィールは登録済みです'
-    end
+    return if @user.first_login
+
+    redirect_to profile_path, warning: '既にプロフィールは登録済みです'
   end
 
   def user_params

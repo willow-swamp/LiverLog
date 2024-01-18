@@ -1,9 +1,10 @@
 <footer class="footer items-center p-4 bg-gradient-to-r from-primary to-secondary text-neutral-content">
   <aside class="items-center grid-flow-col">
-    <p>Copyright © 2023 - All right reserved</p>
+    <p>Copyright © 2024 肝ログ All right reserved</p>
   </aside> 
   <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-    <a><%= t 'defaults.terms_of_service' %></a>
-    <a><%= t 'defaults.privacy_policy' %></a>
+    <%= link_to t('defaults.terms_of_service'), terms_of_service_path %>
+    <%= link_to t('defaults.privacy_policy'), privacy_policy_path %>
+    <%= link_to t('defaults.contact'), "https://forms.gle/5kZ875pxgMAwsk8w8" %>
   </nav>
 </footer>
