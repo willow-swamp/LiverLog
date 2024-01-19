@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }
-  validates :non_drinking_days, presence: true, if: -> { self.role == 'general' || self.role == 'admin' }
+  validates :non_drinking_days, presence: true, if: -> { role == 'general' || role == 'admin' }
   validates :role, presence: true
   validates :reminder, inclusion: { in: [true, false] }
   validates :first_login, inclusion: { in: [true, false] }
@@ -22,46 +22,76 @@ class User < ApplicationRecord
   enum role: { general: 0, invitee: 10, admin: 20 }
 
   def monthly_no_drink_day_records
-    self.drink_records.no_drink.where(start_time: Date.today.all_month).count
+    drink_records.no_drink.where(start_time: Date.today.all_month).count
   end
 
   def monthly_non_drinking_days
     # 当月の初日から当日までの日付を取得
     days = Date.today.beginning_of_month..Date.today
     # non_drinking_daysの配列に当月の日付が含まれているかどうかを判定
-    days.select { |day| self.non_drinking_days.include?(day.wday) }.count
+    days.select { |day| non_drinking_days.include?(day.wday) }.count
   end
 
   def monthly_no_drink_achievement
-    return 0 if self.monthly_non_drinking_days == 0
-    (self.monthly_no_drink_day_records.to_f / self.monthly_non_drinking_days.to_f * 100).round(1)
+    return 0 if monthly_non_drinking_days == 0
+
+    (monthly_no_drink_day_records.to_f / monthly_non_drinking_days.to_f * 100).round(1)
   end
 
   def monthly_total_amount_alcohol
     total_amount_alcohol = 0
-    self.drink_records.drink.where(start_time: Date.today.all_month).each do |drink_record|
+    drink_records.drink.where(start_time: Date.today.all_month).each do |drink_record|
       amount_alcohol = drink_record.drink_volume.to_f * (drink_record.alcohol_percentage.to_f * 0.01) * 0.8
       total_amount_alcohol += amount_alcohol
     end
-    return total_amount_alcohol.round(1)
+    total_amount_alcohol.round(1)
   end
 
   def last_manth_total_amount_alcohol
     total_amount_alcohol = 0
-    self.drink_records.drink.where(start_time: Date.today.last_month.all_month).each do |drink_record|
+    drink_records.drink.where(start_time: Date.today.last_month.all_month).each do |drink_record|
       amount_alcohol = drink_record.drink_volume.to_f * (drink_record.alcohol_percentage.to_f * 0.01) * 0.8
       total_amount_alcohol += amount_alcohol
     end
-    return total_amount_alcohol.round(1)
+    total_amount_alcohol.round(1)
   end
 
   def compare_rate_last_manth_total_amount_alcohol
-    return 0 if self.last_manth_total_amount_alcohol == 0
-    (self.monthly_total_amount_alcohol.to_f / self.last_manth_total_amount_alcohol.to_f * 100).round(1)
+    return 0 if last_manth_total_amount_alcohol == 0
+
+    (monthly_total_amount_alcohol.to_f / last_manth_total_amount_alcohol.to_f * 100).round(1)
   end
 
   def compare_amount_last_manth_total_amount_alcohol
-    (self.monthly_total_amount_alcohol.to_f - self.last_manth_total_amount_alcohol.to_f).round(1)
+    (monthly_total_amount_alcohol.to_f - last_manth_total_amount_alcohol.to_f).round(1)
+  end
+
+  def monthly_total_price
+    total_price = 0
+    drink_records.drink.where(start_time: Date.today.all_month).each do |drink_record|
+      price = drink_record.price
+      total_price += price
+    end
+    total_price
+  end
+
+  def last_manth_total_price
+    total_price = 0
+    drink_records.drink.where(start_time: Date.today.last_month.all_month).each do |drink_record|
+      price = drink_record.price
+      total_price += price
+    end
+    total_price
+  end
+
+  def compare_rate_last_manth_total_price
+    return 0 if last_manth_total_price == 0
+
+    (monthly_total_price.to_f / last_manth_total_price.to_f * 100).round(1)
+  end
+
+  def compare_amount_last_manth_total_price
+    monthly_total_price - last_manth_total_price
   end
 
   def like_post(post)
@@ -83,6 +113,6 @@ class User < ApplicationRecord
   private
 
   def destroy_related_groups
-    Group.where(group_admin_id: self.id).destroy_all
+    Group.where(group_admin_id: id).destroy_all
   end
 end

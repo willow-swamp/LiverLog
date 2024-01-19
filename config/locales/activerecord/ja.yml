@@ -18,6 +18,7 @@ ja:
         drink_type: 'お酒の種類'
         drink_volume: '飲酒量'
         alcohol_percentage: 'アルコール度数'
+        price: '金額'
       group:
         name: 'グループ名'
       post_comment:

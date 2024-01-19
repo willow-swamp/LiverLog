@@ -43,6 +43,13 @@
           <div class="ml-4 font-semibold">g</div>
         </div>
       </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <%= f.label :price, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
+        <div class="flex flex-row items-center">
+          <%= f.number_field :price, class: "input input-bordered w-full max-w-xs", id: "price", min: 0 %>
+          <div class="ml-4 font-semibold">円</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-actions justify-end m-8">

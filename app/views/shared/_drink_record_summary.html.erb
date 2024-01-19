@@ -15,4 +15,15 @@
       <div class="stat-desc">- <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
     <% end %>
   </div>
+  <div class="stat">
+    <div class="stat-title"><%= t 'defaults.total_price' %></div>
+    <div class="stat-value"><%= user.monthly_total_price %>円</div>
+    <% if user.compare_amount_last_manth_total_price > 0 %>
+      <div class="stat-desc">↗︎ <%= user.compare_amount_last_manth_total_price %>円 (<%= user.compare_rate_last_manth_total_price %>%)</div>
+    <% elsif user.compare_amount_last_manth_total_price < 0 %>
+      <div class="stat-desc">↘︎ <%= user.compare_amount_last_manth_total_price %>円 (<%= user.compare_rate_last_manth_total_price %>%)</div>
+    <% else %>
+      <div class="stat-desc">- <%= user.compare_amount_last_manth_total_price %>円 (<%= user.compare_rate_last_manth_total_price %>%)</div>
+    <% end %>
+  </div>
 </div>

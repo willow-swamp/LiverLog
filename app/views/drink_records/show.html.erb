@@ -44,6 +44,13 @@
           <div class="ml-4 font-semibold">g</div>
         </div>
       </div>
+      <div class="form-control mb-4 flex w-full flex-row items-center">
+        <label class="label mr-8 w-44"><%= DrinkRecord.human_attribute_name(:price) %></label>
+        <div class="flex flex-row items-center">
+          <div class="font-semibold"><%= @drink_record.price %></div>
+          <div class="ml-4 font-semibold">円</div>
+        </div>
+      </div>
       <div class="card-actions justify-end">
         <%= link_to t('defaults.edit'), edit_drink_record_path, class: "btn btn-primary" %>
         <%= link_to t('defaults.delete'), drink_record_path, class: "btn btn-accent", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %>
