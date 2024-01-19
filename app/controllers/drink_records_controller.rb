@@ -1,5 +1,5 @@
 class DrinkRecordsController < ApplicationController
-  before_action :set_drink_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_drink_record, only: %i[show edit update destroy]
 
   def index
     @drink_records = current_user.drink_records
@@ -20,11 +20,9 @@ class DrinkRecordsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @drink_record.assign_attributes(drink_record_params)
@@ -44,7 +42,8 @@ class DrinkRecordsController < ApplicationController
   private
 
   def drink_record_params
-    params.require(:drink_record).permit(:user_id, :record_type, :start_time, :drink_type, :drink_volume, :alcohol_percentage)
+    params.require(:drink_record).permit(:user_id, :record_type, :start_time, :drink_type, :drink_volume,
+                                         :alcohol_percentage, :price)
   end
 
   def set_drink_record
