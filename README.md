@@ -1,5 +1,8 @@
 # 肝ログ　（LiverLog）
 
+## サービスURL
+https://liverlog-37cd9c9c3fe3.herokuapp.com/
+
 ## サービス概要
 肝ログ（LiverLog）は、休肝日と飲酒日を記録することで、飲酒管理ができるサービスです。
 
@@ -65,7 +68,7 @@
  
 ■ インフラ:
  
-* Webアプリケーションサーバ: Fly.io
+* Webアプリケーションサーバ: Heroku
 * データベースサーバ: PostgreSQL（Fly Postgres）
 
 ### 画面遷移図
