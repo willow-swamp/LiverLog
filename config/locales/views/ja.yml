@@ -8,6 +8,7 @@ ja:
     not_authenticated: 'ログインしてください'
     group: 'グループ'
     my_page: 'マイページ'
+    admin_page: '管理ページ'
     record: '記録'
     terms_of_service: '利用規約'
     privacy_policy: 'プライバシーポリシー'
