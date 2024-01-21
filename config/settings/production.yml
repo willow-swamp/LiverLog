@@ -1,4 +1,4 @@
 sorcery:
-  line_callback_url: 'https://liverlog-7ad13abdc332.herokuapp.com/oauth/callback?provider=line'
+  line_callback_url: 'https://liverlog-bff5ca6e49ba.herokuapp.com/oauth/callback?provider=line'
 page_url:
-  page_url: 'https://liverlog-7ad13abdc332.herokuapp.com'
+  page_url: 'https://liverlog-bff5ca6e49ba.herokuapp.com'

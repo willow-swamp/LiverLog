@@ -6,6 +6,7 @@ ARG RUBY_VERSION=ruby:3.2.2
 ARG NODE_VERSION=19
 
 FROM --platform=linux/amd64 $RUBY_VERSION
+ENV RAILS_ENV=production
 ARG RUBY_VERSION
 ARG NODE_VERSION
 ENV LANG C.UTF-8
@@ -39,7 +40,5 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-# wheneverでcrontab書き込み
-RUN bundle exec whenever --update-crontab 
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
