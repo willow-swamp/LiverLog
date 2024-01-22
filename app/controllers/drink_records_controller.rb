@@ -1,5 +1,6 @@
 class DrinkRecordsController < ApplicationController
   before_action :set_drink_record, only: %i[show edit update destroy]
+  skip_before_action :require_general, only: %i[show]
 
   def index
     @drink_records = current_user.drink_records
@@ -47,6 +48,6 @@ class DrinkRecordsController < ApplicationController
   end
 
   def set_drink_record
-    @drink_record = current_user.drink_records.find(params[:id])
+    @drink_record = DrinkRecord.find(params[:id])
   end
 end

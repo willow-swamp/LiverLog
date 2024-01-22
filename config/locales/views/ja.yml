@@ -106,6 +106,7 @@ ja:
         error: '招待に失敗しました'
       first_login:
         title: 'ユーザー情報登録'
+        form_description: 'プロフィールを登録しよう！'
   simple_calendar:
     previous: "<<"
     next: ">>"

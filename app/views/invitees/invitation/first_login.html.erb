@@ -2,7 +2,7 @@
 <div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
   <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
     <div class="card-body mx-auto items-center text-center">
-      <h2 class="card-title"><%= t '.form_title' %></h2>
+      <h2 class="card-title"><%= t '.title' %></h2>
       <p><%= t '.form_description' %></p>
       <%= form_with(model: @user, url: invitees_invitation_first_login_path, local: true) do |f| %>
         <div class="form-control w-full max-w-full py-2">
