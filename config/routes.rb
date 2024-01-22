@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :invitees do
     get 'invitation/new/:invite_token', to: 'invitation#new'
     get 'invitation/first_login', to: 'invitation#first_login'
+    patch 'invitation/first_login', to: 'invitation#update'
     get 'oauth/:provider/:invite_token', to: 'oauths#oauth', as: :auth_at_provider
   end
 end

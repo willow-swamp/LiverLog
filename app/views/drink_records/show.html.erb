@@ -51,10 +51,12 @@
           <div class="ml-4 font-semibold">円</div>
         </div>
       </div>
-      <div class="card-actions justify-end">
-        <%= link_to t('defaults.edit'), edit_drink_record_path, class: "btn btn-primary" %>
-        <%= link_to t('defaults.delete'), drink_record_path, class: "btn btn-accent", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %>
-      </div>
+      <% if @drink_record.user == current_user %>
+        <div class="card-actions justify-end">
+          <%= link_to t('defaults.edit'), edit_drink_record_path, class: "btn btn-primary" %>
+          <%= link_to t('defaults.delete'), drink_record_path, class: "btn btn-accent", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
