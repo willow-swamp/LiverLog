@@ -6,13 +6,13 @@
   </div>
   <div class="stat">
     <div class="stat-title"><%= t 'defaults.alcohol_intake' %></div>
-    <div class="stat-value"><%= user.monthly_total_amount_alcohol %>ml</div>
+    <div class="stat-value"><%= user.monthly_total_amount_alcohol %>g</div>
     <% if user.compare_amount_last_manth_total_amount_alcohol > 0 %>
-      <div class="stat-desc">↗︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+      <div class="stat-desc">↗︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>g (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
     <% elsif user.compare_amount_last_manth_total_amount_alcohol < 0 %>
-      <div class="stat-desc">↘︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+      <div class="stat-desc">↘︎ <%= user.compare_amount_last_manth_total_amount_alcohol %>g (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
     <% else %>
-      <div class="stat-desc">- <%= user.compare_amount_last_manth_total_amount_alcohol %>ml (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
+      <div class="stat-desc">- <%= user.compare_amount_last_manth_total_amount_alcohol %>g (<%= user.compare_rate_last_manth_total_amount_alcohol %>%)</div>
     <% end %>
   </div>
   <div class="stat">
