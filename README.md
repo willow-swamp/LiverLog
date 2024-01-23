@@ -50,14 +50,9 @@ https://liverlog-bff5ca6e49ba.herokuapp.com
     * 投稿に対していいねをする
 
 ### 機能の実装方針予定
-* Ruby: 3.2.2
-* Rails: 7.0.8
 * CSSフレームワーク: Tailwind CSS, daisyUI
 * ユーザ登録及び認証機能: Sorcery
-* ユーザ招待機能:
-* 画像アップロード: Active Storage
 * カレンダー表示: simple_calendar
-* グラフ表示: chartkick
 * LINE通知: LINE Messaging API及びLINE Messaging API SDK for Ruby
 
 ■ 開発環境: Docker
@@ -69,7 +64,7 @@ https://liverlog-bff5ca6e49ba.herokuapp.com
 ■ インフラ:
  
 * Webアプリケーションサーバ: Heroku
-* データベースサーバ: PostgreSQL（Fly Postgres）
+* データベースサーバ: PostgreSQL
 
 ### 画面遷移図
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
