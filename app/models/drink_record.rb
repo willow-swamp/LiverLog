@@ -2,8 +2,7 @@ class DrinkRecord < ApplicationRecord
   belongs_to :user
   has_one :post, dependent: :destroy
 
-  validates :user_id, presence: true, uniqueness: { scope: :start_time }, if: :record_type_is_no_drink?
-  validates :user_id, presence: true, if: :record_type_is_drink?
+  validates :user_id, presence: true, uniqueness: { scope: :start_time }
   validates :record_type, presence: true
   validates :start_time, presence: true
   validates :drink_volume, numericality: { only_integer: true, equal_to: 0 }, if: :record_type_is_no_drink?
