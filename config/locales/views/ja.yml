@@ -2,7 +2,7 @@ ja:
   defaults:
     top_page: 'トップページ'
     community: 'コミュニティ'
-    explanation: 'アプリの使い方'
+    explanation: 'アプリの機能'
     login_with_line: 'LINEでログイン'
     login_success: 'ログインしました'
     login_failed: 'ログインに失敗しました'
