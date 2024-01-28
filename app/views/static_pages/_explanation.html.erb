@@ -1,0 +1,100 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="text-center mb-20">
+      <h2 class="text-base font-semibold leading-7 text-primary">For you who want to drink in moderation</h2>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">健康を意識して適度に飲酒したいあなたへ</h1>
+      <p class="mt-6 text-lg leading-8 text-neutral-600 xl:w-2/4 lg:w-3/4 mx-auto">肝ログは、日常の飲酒習慣を管理し、健康的な飲酒生活をサポートするできるようなサービスです</p>
+      <div class="flex mt-6 justify-center">
+        <div class="w-16 h-1 rounded-full bg-primary inline-flex"></div>
+      </div>
+    </div>
+    <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+      <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+        <div class="min-w-full inline-flex items-center justify-center mb-5 flex-shrink-0">
+          <%= image_tag "mypage_sample.png", class:"max-h-64" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-neutral-900 text-lg title-font font-semibold mb-3">マイページで飲酒状況を確認</h2>
+          </h2>
+          <p class="leading-relaxed text-base">1ヶ月間の休肝日とお酒を飲んだ日をカレンダーから確認することができます。また、今月中における本日までの休肝日の達成状況やアルコール摂取量、飲酒代を確認することができます。</p>
+          <%= link_to profile_path, class: "mt-3 text-indigo-500 inline-flex items-center" do %>
+            マイページへ（ログインが必要）
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          <% end %>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/3 flex flex-col text-center items-center indicator">
+        <span class="indicator-item badge badge-lg badge-primary mr-16">イチオシ!!!!</span> 
+        <div class="min-w-full inline-flex items-center justify-center mb-5 flex-shrink-0">
+          <%= image_tag "profile_sample.png", class:"max-h-64" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-neutral-900 text-lg title-font font-semibold mb-3">あらかじめ登録した休肝日にLINEで通知が来る</h2>
+          </h2>
+          <p class="leading-relaxed text-base">あらかじめプロフィールに休肝日を登録しておくことができます。また、プロフィール編集からリマインダーをONにすることで肝ログ公式アカウントからLINEメッセージにより休肝日のお知らせと1週間の記録状況が届きます。</p>
+          <p class="leading-relaxed text-base">（※LINEでの通知を受け取るには「肝ログ」公式LINEアカウントを友だち追加する必要があります。）</p>
+          <%= link_to edit_profile_path, class: "mt-3 text-indigo-500 inline-flex items-center" do %>
+            プロフィール編集へ（ログインが必要）
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          <% end %>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+        <div class="min-w-full inline-flex items-center justify-center mb-5 flex-shrink-0">
+          <%= image_tag "drink_record.png", class:"max-h-64" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">休肝日 or お酒を飲んだ日 を記録</h2>
+          <p class="leading-relaxed text-base">「休肝日」または「お酒を飲んだ日（飲酒日）」を記録できます。お酒を飲んだ日には飲んだ酒の詳細を登録することにより摂取したアルコール量を確認することができます。</p>
+          <%= link_to new_drink_record_path, class: "mt-3 text-indigo-500 inline-flex items-center" do %>
+            休肝日&飲酒記録登録へ（ログインが必要）
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          <% end %>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
+        <div class="min-w-full inline-flex items-center justify-center mb-5 flex-shrink-0">
+          <%= image_tag "group_sample.png", class:"max-h-64" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">グループを作って飲酒状況を共有</h2>
+          <p class="leading-relaxed text-base">ユーザーはマイページからグループを作成して友人や家族をアプリに招待することができます。グループ内ではメンバーがユーザの飲酒状況を確認でき、一人で休肝日を実践できるか不安な方でもメンバーに見守られながら飲酒管理ができます。</p>
+        </div>
+        <%= link_to profile_path, class: "mt-3 text-indigo-500 inline-flex items-center" do %>
+          マイページからグループを作成する（ログインが必要）
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        <% end %>
+      </div>
+      <div class="p-4 md:w-1/3 flex flex-col text-center items-center indicator">
+        <span class="indicator-item badge badge-lg badge-primary mr-16">イチオシ!!!!</span> 
+        <div class="min-w-full inline-flex items-center justify-center mb-5 flex-shrink-0">
+          <%= image_tag "post_comment_sample.png", class:"max-h-64" %>
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">グループメンバーで励まし合おう！！</h2>
+          <p class="leading-relaxed text-base">グループメンバー同士で休肝に取り組むユーザーを励ましましょう！！グループページにはユーザーが休肝日またはお酒を飲んだ日を記録した時に記録のポストが自動投稿されます。投稿に対してユーザーが休肝日を達成できたときなどには励ましのコメントを投稿しましょう！！</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content max-w-full text-center py-12">
+      <div class="max-w-full">
+        <% if logged_in? %>
+          <%= link_to t("defaults.my_page"), profile_path, class: "btn btn-primary" %>
+        <% else %>
+          <p class="font-semibold text-lg mb-4">LINEでログインしてさっそく始めよう！</p>
+          <%= link_to auth_at_provider_path(provider: :line), class: "inline-block text-center", id: "line-login-btn" do %>
+            <%= image_tag "btn_login_base.png" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
