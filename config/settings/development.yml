@@ -1,4 +1,4 @@
 sorcery:
-  line_callback_url: 'https://7523-2400-4052-6960-9b00-dc10-13e1-eb46-8cac.ngrok-free.app/oauth/callback?provider=line'
+  line_callback_url: 'https://1fe1-106-154-158-81.ngrok-free.app/oauth/callback?provider=line'
 page_url:
-  page_url: 'https://7523-2400-4052-6960-9b00-dc10-13e1-eb46-8cac.ngrok-free.app'
+  page_url: 'https://1fe1-106-154-158-81.ngrok-free.app'
