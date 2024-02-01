@@ -1,4 +1,4 @@
-const calculateAndDisplayIntake = () => {
+document.addEventListener('turbo:load', () => {
   var volumeElement = document.getElementById('drink_volume');
   var percentageElement = document.getElementById('alcohol_percentage');
   var intakeElement = document.getElementById('alcohol_intake');
@@ -10,13 +10,7 @@ const calculateAndDisplayIntake = () => {
     intakeElement.textContent = intake.toFixed(2);
   };
 
+  calculateIntake();
   volumeElement.addEventListener('input', calculateIntake);
   percentageElement.addEventListener('input', calculateIntake);
-  calculateIntake();
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('turbo:load', calculateAndDisplayIntake);
 });
-
-export default calculateAndDisplayIntake;
