@@ -26,6 +26,7 @@ class DrinkRecordsController < ApplicationController
   def edit; end
 
   def update
+    binding.pry
     @drink_record.assign_attributes(drink_record_params)
     if @drink_record.save
       redirect_to drink_record_path(@drink_record), success: t('defaults.update_success')
@@ -43,8 +44,15 @@ class DrinkRecordsController < ApplicationController
   private
 
   def drink_record_params
-    params.require(:drink_record).permit(:user_id, :record_type, :start_time, :drink_type, :drink_volume,
-                                         :alcohol_percentage, :price)
+    record_params = params.require(:drink_record).permit(:user_id, :record_type, :start_time, :drink_type, :drink_volume,
+                                                         :alcohol_percentage, :price)
+    return record_params unless record_params[:record_type] == 'no_drink'
+
+    record_params[:drink_type] = nil
+    record_params[:drink_volume] = 0
+    record_params[:alcohol_percentage] = 0
+    record_params[:price] = 0
+    record_params
   end
 
   def set_drink_record
