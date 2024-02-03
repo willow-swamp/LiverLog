@@ -21,12 +21,13 @@ class DrinkRecordsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @drink_record_details = @drink_record.user.drink_records.where(start_time: @drink_record.start_time)
+  end
 
   def edit; end
 
   def update
-    binding.pry
     @drink_record.assign_attributes(drink_record_params)
     if @drink_record.save
       redirect_to drink_record_path(@drink_record), success: t('defaults.update_success')

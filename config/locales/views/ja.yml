@@ -16,6 +16,7 @@ ja:
     contact: 'お問い合わせ'
     register: '登録'
     detail: '詳細'
+    add_record: '飲酒記録を追加'
     edit: '編集'
     delete: '削除'
     no_alcohol_day: '休肝日'
