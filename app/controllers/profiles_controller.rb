@@ -1,8 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: %i[edit update show]
 
-  def edit
-  end
+  def edit; end
 
   def update
     user_params_with_days = user_params
@@ -17,7 +16,8 @@ class ProfilesController < ApplicationController
 
   def show
     start_date = params.fetch(:start_time, Date.today).to_date
-    @drink_record = @user.drink_records.all
+    drink_records = @user.drink_records.all
+    @display_records = drink_records.where(id: DrinkRecord.group(:start_time).select('MIN(id)'))
   end
 
   private

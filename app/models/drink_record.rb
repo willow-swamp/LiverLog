@@ -2,7 +2,8 @@ class DrinkRecord < ApplicationRecord
   belongs_to :user
   has_one :post, dependent: :destroy
 
-  validates :user_id, presence: true, uniqueness: { scope: :start_time }
+  validates :user_id, presence: true, uniqueness: { scope: :start_time }, if: :record_type_is_no_drink?
+  validate :no_drink_and_drink_cannot_be_same_day, if: :record_type_is_drink?
   validates :record_type, presence: true
   validates :start_time, presence: true
   validates :drink_volume, numericality: { only_integer: true, equal_to: 0 }, if: :record_type_is_no_drink?
@@ -43,5 +44,11 @@ class DrinkRecord < ApplicationRecord
 
   def record_type_is_no_drink?
     record_type == 'no_drink'
+  end
+
+  def no_drink_and_drink_cannot_be_same_day
+    return unless DrinkRecord.where(user_id:, start_time:, record_type: 'no_drink').exists?
+
+    errors.add(:start_time, '同じ日に休肝日と飲酒日の両方は記録できません')
   end
 end

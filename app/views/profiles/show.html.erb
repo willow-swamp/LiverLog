@@ -47,7 +47,7 @@
   <div class="card rounded-box flex-grow bg-white shadow-xl md:w-2/3">
     <div class="flex w-full flex-col p-4">
       <div class="card rounded-box grid place-items-center bg-base-300">
-        <%= month_calendar(events: @drink_record) do |date, drink_record| %>
+        <%= month_calendar(events: @display_records) do |date, drink_record| %>
           <div><%= date.day %></div>
           <% drink_record.each do |record| %>
             <% if record.no_drink? %>
