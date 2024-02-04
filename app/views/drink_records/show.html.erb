@@ -1,6 +1,6 @@
 <% content_for(:title, @drink_record.start_time.strftime("%F") + t(".title")) %>
 <div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
-  <div class="card mx-8 max-w-full rounded-xl bg-white shadow-xl">
+  <div class="card rounded-xl bg-white shadow-xl">
     <div class="card-body mx-auto items-center py-6 text-center">
       <h2 class="card-title text-4xl"><%= t '.title' %></h2>
     </div>
@@ -13,7 +13,7 @@
         <div class="btn btn-secondary btn-active btn-outline join-item m-4 px-12" type="radio" name="drink_record[:record_type]"><%= t 'defaults.alcohol_day' %></div>
       <% end %>
     </div>
-    <div class="md:p-8 p-4">
+    <div class="md:p-8 p-4 mx-auto">
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <label class="label md:mr-8 md:w-44 mr-4 w-24"><%= DrinkRecord.human_attribute_name(:start_time) %></label>
         <div class="font-semibold"><%= @drink_record.start_time.strftime("%Y年 %m月 %d日(%a)") %></div>

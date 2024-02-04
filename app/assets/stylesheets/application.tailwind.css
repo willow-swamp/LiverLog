@@ -99,4 +99,8 @@
   .text-tiny {
     font-size: 0.4rem;
   }
+
+  .bg-opacity-for-topimage {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
 }
