@@ -22,7 +22,8 @@ class GroupsController < ApplicationController
 
   def show
     start_date = params.fetch(:start_time, Date.today).to_date
-    @drink_record = @group.group_admin.drink_records.all
+    drink_records = @group.group_admin.drink_records.all
+    @display_records = drink_records.where(id: drink_records.group(:start_time).select('MIN(id)'))
     @admin_user = @group.group_admin
   end
 
@@ -54,6 +55,9 @@ class GroupsController < ApplicationController
   end
 
   def authorize_group
-    redirect_to group_path(current_user.groups.first), warning: t('defaults.access_denied') unless @group.users.exists?(current_user.id)
+    return if @group.users.exists?(current_user.id)
+
+    redirect_to group_path(current_user.groups.first),
+                warning: t('defaults.access_denied')
   end
 end

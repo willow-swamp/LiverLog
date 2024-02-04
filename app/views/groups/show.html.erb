@@ -71,7 +71,7 @@
       <div class="flex w-full flex-col p-4">
         <div class="card rounded-box grid">
           <h2 class="text-xl font-semibold text-center"><%= t 'defaults.record' %></h2>
-          <%= week_calendar(number_of_weeks: 2, events: @drink_record) do |date, drink_record| %>
+          <%= week_calendar(number_of_weeks: 2, events: @display_records) do |date, drink_record| %>
             <div><%= date.day %></div>
             <% drink_record.each do |record| %>
               <% if record.no_drink? %>

@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   def show
     start_date = params.fetch(:start_time, Date.today).to_date
     drink_records = @user.drink_records.all
-    @display_records = drink_records.where(id: DrinkRecord.group(:start_time).select('MIN(id)'))
+    @display_records = drink_records.where(id: drink_records.group(:start_time).select('MIN(id)'))
   end
 
   private
