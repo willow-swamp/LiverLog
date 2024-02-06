@@ -11,7 +11,7 @@
       <li><%= link_to t('defaults.explanation'), root_path %></li>
     </ul>
     <ul class="menu menu-horizontal invisible px-1 md:visible">
-      <li><a><%= t 'defaults.community' %></a></li>
+      <li><%= link_to t('defaults.community'), community_posts_path %></li>
     </ul>
     <% if current_user.general? || current_user.admin? %>
       <%= link_to t('defaults.record'), new_drink_record_path, class: 'btn btn-accent', data: { turbo: false } %>
@@ -57,7 +57,9 @@
               </ul>
             </li>
           <% end %>
-          <li class="md:hidden"><a><%= t 'defaults.community' %></a></li>
+          <li class="md:hidden">
+            <li><%= link_to t('defaults.community'), community_posts_path %></li>
+          </li>
           <li class="md:hidden">
             <%= link_to t('defaults.explanation'), root_path %>
           </li>

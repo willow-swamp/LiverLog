@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :post_likes, dependent: :destroy
   has_many :liked_posts, through: :post_likes, source: :post
   accepts_nested_attributes_for :authentications
+  has_many :community_posts, dependent: :destroy
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }

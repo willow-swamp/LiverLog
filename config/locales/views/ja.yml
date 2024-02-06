@@ -29,6 +29,7 @@ ja:
     update_success: '記録を更新しました'
     access_denied: 'アクセス権限がありません'
     post: '投稿'
+    no_post: 'まだ投稿がありません'
     comment_success: 'コメントしました'
     comment_error: 'コメントに失敗しました'
     comment_delete: 'コメントを削除しました'
@@ -100,6 +101,11 @@ ja:
     show:
       title: 'ポスト'
       no_alcohol_day: '休肝日'
+  community_posts:
+    index:
+      title: 'コミュニティ'
+      no_post: '投稿なし'
+      post: 'ポストする'
   invitees:
     invitation:
       new:

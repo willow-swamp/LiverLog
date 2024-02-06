@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_154852) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_134247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_154852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+  end
+
+  create_table "community_posts", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_community_posts_on_user_id"
   end
 
   create_table "drink_records", force: :cascade do |t|
@@ -99,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_154852) do
     t.integer "non_drinking_days", default: [], array: true
   end
 
+  add_foreign_key "community_posts", "users"
   add_foreign_key "drink_records", "users"
   add_foreign_key "groups", "users", column: "group_admin_id"
   add_foreign_key "post_comments", "posts"

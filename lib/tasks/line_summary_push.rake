@@ -15,7 +15,8 @@ namespace :line_summary_push do
     end
 
     def week_summary(user)
-      user.drink_records.where(start_time: Date.today.prev_week.beginning_of_week..Date.today.prev_week.end_of_week)
+      drnik_records = user.drink_records.where(start_time: Date.today.prev_week.beginning_of_week..Date.today.prev_week.end_of_week)
+      drink_records.where(id: drink_records.group(:start_time).select('MIN(id)'))
     end
 
     def week_total_amount_alcohol(user)
