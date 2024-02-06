@@ -1,0 +1,36 @@
+<% content_for(:title, t(".title")) %>
+<div class="w-6xl flex-auto">
+  <div class="flex flex-col p-4 max-w-6xl mx-auto">
+    <h2 class="title-font text-lg font-semibold"><%= t '.title' %></h2>
+    <% if @user.present? %>
+    <div class="card rounded-box flex-grow place-items-center bg-white shadow-xl">
+      <div class="w-full px-4">
+        <div class="flex flex-row items-center justify-center text-left md:justify-start md:text-left">
+          <div class="flex flex-row flex-auto items-center pl-2 text-left md:text-left">
+            <div class="avatar">
+              <div class="h-12 w-12 rounded-full">
+                <%= image_tag @user.image %>
+              </div>
+            </div>
+            <div class="pl-6">
+              <h2 class="title-font font-semibold"><%= @user.username %></h2>
+            </div>
+          </div>
+          <div class="py-4 pl-4 flex-initial">
+            <%= link_to t('defaults.my_page'), profile_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <% end %>
+    <div class="flex-grow">
+      <%= render partial: 'community_posts/posts', locals: { posts: @community_posts } %>
+    </div>
+  </div>
+  <% if logged_in? %>
+    <% if @user.general? || @user.admin? %>
+      <%= link_to t(".post"), new_community_post_path, class: "btn btn-outline btn-accent fixed md:right-1/4 right-4" %>
+    <% end %>
+  <% end %>
+</div>

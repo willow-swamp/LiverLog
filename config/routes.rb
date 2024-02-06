@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'first_login', to: 'static_pages#first_login'
   patch 'first_login', to: 'static_pages#update'
   put 'first_login', to: 'static_pages#update'
-  # resources :users, only: [:edit, :update, :show]
   resource :profile, only: %i[edit update show]
   resources :drink_records, only: %i[new create show edit update destroy]
   resources :groups, only: %i[new create show edit update destroy] do
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :community_posts
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'

@@ -1,0 +1,20 @@
+<div class="card rounded-box bg-white shadow-xl w-full">
+  <div class="flex w-full flex-col p-4">
+    <div class="card rounded-box grid place-items-center bg-base-300">
+      <%= month_calendar(events: display_records) do |date, drink_record| %>
+        <div><%= date.day %></div>
+        <% drink_record.each do |record| %>
+          <% if record.no_drink? %>
+            <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
+          <% elsif record.drink? %>
+            <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="flex flex-col justify-evenly md:flex-row md:content-evenly">
+      <%= link_to '休肝日・飲酒日を記録', new_drink_record_path, class:"btn btn-accent m-4", data: { turbo: false } %>
+    </div>
+    <div class="card rounded-box grid h-20 place-items-center bg-base-300 hidden">content</div>
+  </div>
+</div>

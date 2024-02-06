@@ -1,16 +1,16 @@
 <% content_for(:title, t(".title")) %>
-<div class="flex flex-col p-4 md:flex-row md:p-8 flex-auto max-w-6xl mx-auto">
-  <div class="card rounded-box flex-grow place-items-center bg-white shadow-xl md:w-1/3">
-    <div class="w-full p-4">
-      <div class="h-full flex-row items-center justify-center text-left md:justify-start md:text-left">
-        <div class="flex flex-row items-center pl-2 text-left md:text-left">
-          <div class="avatar">
-            <div class="h-24 w-24 rounded-full">
-              <%= image_tag @user.image %>
+<div class="w-6xl flex-auto">
+  <div class="flex flex-col p-4 md:flex-row md:p-8 max-w-6xl mx-auto">
+    <div class="card rounded-box flex-grow place-items-center bg-white shadow-xl md:w-1/3">
+      <div class="w-full p-4">
+        <div class="h-full flex-row items-center justify-center text-left md:justify-start md:text-left">
+          <div class="flex flex-row items-center pl-2 text-left md:text-left">
+            <div class="avatar">
+              <div class="h-24 w-24 rounded-full">
+                <%= image_tag @user.image %>
+              </div>
             </div>
-          </div>
-          <div class="pl-6">
-            <div>
+            <div class="pl-6">
               <h2 class="title-font text-xl font-semibold text-neutral-900"><%= @user.username %></h2>
               <p><%= t '.no_alcohol_day' %></p>
               <% @user.non_drinking_days.each do |index| %>
@@ -18,50 +18,42 @@
               <% end %>
             </div>
           </div>
-        </div>
-        <div class="flex-grow py-4 pl-4">
-          <p><%= @user.comment %></p>
-          <div class="text-right">
-            <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs", id:"edit-profile" %>
-          </div>
-        </div>
-        <div class="w-full">
-          <p class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.group' %></p>
-          <% if @user.groups.present? %>
-            <%= render partial: 'profiles/groups', locals: { user: @user } %>
-          <% else %>
-            <div class="btn-neutral-100 btn btn-active w-full">
-              <%= t '.no_group' %>
+          <div class="flex-grow py-4 pl-4">
+            <p><%= @user.comment %></p>
+            <div class="text-right">
+              <%= link_to (t 'profiles.edit.title'), edit_profile_path, class:"link text-xs", id:"edit-profile" %>
             </div>
-          <% end %>
-          <div class="text-right">
-            <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false }, id: "new-group" %>
           </div>
+          <div class="w-full">
+            <p class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.group' %></p>
+            <% if @user.groups.present? %>
+              <%= render partial: 'profiles/groups', locals: { user: @user } %>
+            <% else %>
+              <div class="btn-neutral-100 btn btn-active w-full">
+                <%= t '.no_group' %>
+              </div>
+            <% end %>
+            <div class="text-right">
+              <%= link_to t('.create_group'), new_group_path, class: "link text-xs", data: { turbo: false }, id: "new-group" %>
+            </div>
+          </div>
+          <div class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.record' %></div>
+          <%= render 'shared/drink_record_summary', { user: @user } %>
         </div>
-        <div class="title-font text-xl font-semibold text-neutral-900"><%= t 'defaults.record' %></div>
-        <%= render 'shared/drink_record_summary', { user: @user } %>
       </div>
     </div>
-  </div>
-  <div class="divider md:divider-horizontal"></div>
-  <div class="card rounded-box flex-grow bg-white shadow-xl md:w-2/3">
-    <div class="flex w-full flex-col p-4">
-      <div class="card rounded-box grid place-items-center bg-base-300">
-        <%= month_calendar(events: @display_records) do |date, drink_record| %>
-          <div><%= date.day %></div>
-          <% drink_record.each do |record| %>
-            <% if record.no_drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-primary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
-            <% elsif record.drink? %>
-              <%= link_to record.record_type_i18n, drink_record_path(record), class:"btn btn-xs btn-secondary md:btn-sm lg:btn-md text-tiny", data: { turbo: false } %>
-            <% end %>
-          <% end %>
-        <% end %>
+    <div class="divider md:divider-horizontal"></div>
+    <div class="flex-grow md:w-2/3">
+      <div role="tablist" class="tabs tabs-bordered">
+        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="カレンダー" checked/>
+        <div role="tabpanel" class="tab-content">
+          <%= render partial: 'profiles/record_calendar', locals: { display_records: @display_records } %>
+        </div>
+        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="コミュニティポスト"/>
+        <div role="tabpanel" class="tab-content">
+          <%= render partial: 'community_posts/posts', locals: { posts: @community_posts } %>
+        </div>
       </div>
-      <div class="flex flex-col justify-evenly md:flex-row md:content-evenly">
-        <%= link_to '休肝日・飲酒日を記録', new_drink_record_path, class:"btn btn-accent m-4", data: { turbo: false } %>
-      </div>
-      <div class="card rounded-box grid h-20 place-items-center bg-base-300 hidden">content</div>
     </div>
   </div>
 </div>
