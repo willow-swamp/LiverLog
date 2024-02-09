@@ -1,5 +1,5 @@
 <% if posts.present? %>
-  <% posts.each do |post| %>
+  <% posts.reverse_each do |post| %>
     <%= link_to community_post_path(post), class: "flex flex-row card rounded-box bg-white shadow-xl w-full mb-4 p-4", id: "community-post-#{post.id}" do %>
       <div class="avatar">
         <div class="h-12 w-12 rounded-full">
@@ -7,9 +7,9 @@
         </div>
       </div>
       <div class="pl-6">
-        <div class="flex flex-row">
+        <div class="flex flex-col md:flex-row">
           <div class="font-bold"><%= post.user.username %></div>
-          <div class="ml-4 text-neutral-300">作成日: <%= post.created_at.strftime("%F") %></div>
+          <div class="ml-4 text-neutral-300">投稿日: <%= post.created_at.strftime('%Y年%m月%d日') %></div>
         </div>
         <div class="text-neutral-900"><%= post.content %></div>
       </div> 

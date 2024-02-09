@@ -1,0 +1,9 @@
+<%= form_with model: community_post, local: true do |f| %>
+  <div class="form-control w-full px-8">
+    <%= f.label :content, class: "label" %>
+    <%= f.text_area :content, class: "textarea h-24 textarea-bordered w-full max-w-full" %>
+  </div>
+  <div class="card-actions justify-end">
+    <%= f.submit (t 'defaults.register'), class: "btn btn-primary m-8" %>
+  </div>
+<% end %>
