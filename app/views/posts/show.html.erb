@@ -23,7 +23,7 @@
             </div>
             <div class="my-4 text-neutral-900 text-xl"><%= @post.content %></div>
             <ul class="list-none">
-              <li class="inline-block mr-2 text-neutral-300"><%= @post.drink_record.start_time.strftime("%F") %></li>
+              <li class="inline-block mr-2 text-neutral-300">記録作成日: <%= @post.drink_record.created_at.strftime('%Y年%m月%d日') %></li>
             </ul>
           <%= render 'shared/like_btn', { post: @post } %>
           </div>

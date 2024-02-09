@@ -22,10 +22,10 @@ class DrinkRecord < ApplicationRecord
     @user.groups.each do |group|
       if record_type == 'no_drink'
         group.posts.create!(user_id: @user.id, group_id: group.id, drink_record_id: id,
-                            content: "#{@user.username}さんが休肝日を達成しました！！")
+                            content: "#{@user.username}さんが休肝日を達成しました！！（#{start_time.strftime('%m月%d日')}）")
       else
         group.posts.create!(user_id: @user.id, group_id: group.id, drink_record_id: id,
-                            content: "#{@user.username}さんがお酒を嗜みました🍺（今日のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(drink_volume, alcohol_percentage)}g）")
+                            content: "#{@user.username}さんがお酒を嗜みました🍺（#{start_time.strftime('%m月%d日')}のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(drink_volume, alcohol_percentage)}g）")
       end
     end
   end

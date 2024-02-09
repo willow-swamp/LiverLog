@@ -4,6 +4,7 @@ ja:
       user: 'ユーザー'
       drink_record: '休肝日&飲酒記録'
       group: 'グループ'
+      community_posts: 'コミュニティポスト'
     attributes:
       user:
         username: 'ユーザー名'
@@ -25,6 +26,10 @@ ja:
         user_id: 'ユーザーID'
         post_id: '投稿ID'
         message: 'コメント'
+      community_post:
+        user_id: 'ユーザーID'
+        content: '内容'
+        image: '画像'
   enums:
     drink_record:
       record_type:
