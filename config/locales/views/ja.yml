@@ -111,6 +111,22 @@ ja:
     create:
       success: 'ポストを投稿しました'
       error: 'ポストの投稿に失敗しました'
+    show:
+      title: 'ポスト'
+      no_comment: 'コメントなし'
+      no_alcohol_day: '休肝日'
+      edit: 'ポスト編集'
+      delete: 'ポスト削除'
+    edit:
+      title: 'ポスト編集'
+      success: 'ポストを更新しました'
+      error: 'ポストの更新に失敗しました'
+    update:
+      success: 'ポストを更新しました'
+      error: 'ポストの更新に失敗しました'
+    destroy:
+      success: 'ポストを削除しました'
+      error: 'ポストの削除に失敗しました'
   invitees:
     invitation:
       new:

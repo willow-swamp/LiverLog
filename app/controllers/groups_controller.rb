@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
     drink_records = @group.group_admin.drink_records.all
     @display_records = drink_records.where(id: drink_records.group(:start_time).select('MIN(id)'))
     @admin_user = @group.group_admin
+    @posts = @group.posts.includes(:user).order(created_at: :desc)
   end
 
   def edit; end

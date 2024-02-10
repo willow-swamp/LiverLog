@@ -1,16 +1,16 @@
-<div class="navbar from-primary to-secondary bg-gradient-to-r">
+<div class="navbar from-primary to-secondary bg-gradient-to-r sticky top-0 z-10">
   <div class="flex-1">
     <div class="mx-4 text-xl font-bold">肝ログ</div>
   </div>
-  <div class="navbar-end">
-    <ul class="menu menu-horizontal invisible px-1 md:visible">
+  <div class="navbar-end max-md:hidden">
+    <ul class="menu menu-horizontal px-1">
       <li><%= link_to t('defaults.top_page'), root_path %></li>
       <li><%= link_to t('defaults.community'), community_posts_path %></li>
     </ul>
-    <%= link_to auth_at_provider_path(provider: :line), class: "inline-block" do %>
+  </div>
+    <%= link_to auth_at_provider_path(provider: :line), class: "inline-block w-max" do %>
         <%= image_tag "btn_login_base.png" %>
     <% end %>
-  </div>
   <div class="dropdown dropdown-end md:hidden">
     <div class="flex-none md:hidden">
       <label tabindex="0" class="btn btn-square btn-ghost">

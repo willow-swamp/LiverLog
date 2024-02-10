@@ -1,2 +1,64 @@
-<h1>CommunityPosts#show</h1>
-<p>Find me in app/views/community_posts/show.html.erb</p>
+<% content_for(:title, t(".title")) %>
+<div class="w-4xl py-4 flex-auto">
+  <div class="max-w-4xl mx-auto sm:px-4 pt-5">
+    <div class="mb-3">
+      <div class="px-4">
+        <!-- 掲示板内容 -->
+        <article class="flex flex-col min-w-full rounded break-words border bg-white border-gray-300">
+          <div class="flex-auto p-6 min-w-full">
+            <div class='flex flex-row'>
+              <div class='flex flex-row flex-1'>
+              <div class="avatar">
+                <div class="h-12 w-12 rounded-full">
+                  <%= image_tag @community_post.user.image %>
+                </div>
+              </div>
+              <div class='pl-4'>
+                <div class="font-bold text-xl"><%= @community_post.user.username %></div>
+                  <div class="text-sm"><%= t '.no_alcohol_day' %>
+                    <div>
+                    <% @community_post.user.non_drinking_days.each do |index| %>
+                      <div class="badge badge-primary badge-xs md:badge-sm"><%= I18n.t('date.day_names')[index] %></div>
+                    <% end %>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              <% if @community_post.user == current_user %>
+                <div class="flex-none">
+                  <div class="dropdown dropdown-end">
+                    <button class="btn btn-square btn-ghost">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+                    </button>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                      <li><%= link_to t('.edit'), edit_community_post_path(@community_post) %></li>
+                      <li><%= link_to t('.delete'), community_post_path(@community_post), data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %></li>
+                    </ul>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="my-4 text-neutral-900 text-xl"><%= @community_post.content %></div>
+            <ul class="list-none">
+              <li class="inline-block mr-2 text-neutral-300">投稿日: <%= @community_post.created_at.strftime('%Y年%m月%d日') %></li>
+            </ul>
+            <%# <%= render 'shared/like_btn', { post: @community_post } %> %>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- コメントフォーム -->
+    <%# <div class="px-4"> %>
+      <%# <%= render 'post_comments/form', { group: @group, post: @post, comment: @post_comment } %> %>
+    <%# </div> %>
+
+    <!-- コメントエリア -->
+    <%# <% if @post_comments.present? %> %>
+      <%# <div class="divider"></div> %>
+      <%# <div class="px-4"> %>
+        <%# <%= render 'post_comments/comments', { comments: @post_comments } %> %>
+      <%# </div> %>
+    <%# <% end %> %>
+  </div>
+</div>
