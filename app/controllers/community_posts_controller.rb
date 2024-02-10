@@ -2,9 +2,10 @@ class CommunityPostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   skip_before_action :require_general, only: %i[index show]
   before_action :set_user, only: %i[index new create edit update destroy]
+  before_action :set_community_post, only: %i[show edit update destroy]
 
   def index
-    @community_posts = CommunityPost.all
+    @community_posts = CommunityPost.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -24,11 +25,27 @@ class CommunityPostsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    authorize_user(@community_post, @user)
+  end
 
-  def update; end
+  def update
+    authorize_user(@community_post, @user)
+    if @community_post.update(community_post_params)
+      flash[:success] = t '.success'
+      redirect_to community_posts_path
+    else
+      flash.now[:danger] = t '.error'
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    authorize_user(@community_post, @user)
+    @community_post.destroy!
+    flash[:success] = t '.success'
+    redirect_to community_posts_path
+  end
 
   private
 
@@ -36,7 +53,18 @@ class CommunityPostsController < ApplicationController
     params.require(:community_post).permit(:content, :image)
   end
 
+  def set_community_post
+    @community_post = CommunityPost.find(params[:id])
+  end
+
   def set_user
     @user = (current_user if logged_in?)
+  end
+
+  def authorize_user(community_post, user)
+    return if community_post.user == user
+
+    flash[:danger] = t 'defaults.access_denied'
+    redirect_to community_posts_path
   end
 end
