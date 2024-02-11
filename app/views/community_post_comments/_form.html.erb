@@ -1,0 +1,14 @@
+<div class="flex flex-row mb-3 w-full rounded break-words border bg-white border-gray-300">
+  <div class="p-4 w-full">
+    <%= form_with model: [community_post, comment], local: true do |f| %>
+      <%= render 'shared/error_messages', { object: f.object } %>
+      <div class="form-control">
+        <%= f.label :message, class: 'label' %>
+      </div>
+      <div class="form-control">
+        <%= f.text_area :message, class: 'textarea textarea-bordered max-w-full mb-3', id: 'js-new-comment-body', placeholder: CommunityPostComment.human_attribute_name(:message) %>
+      </div>
+      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

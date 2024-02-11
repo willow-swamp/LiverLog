@@ -1,0 +1,2 @@
+module CommunityPostLikesHelper
+end

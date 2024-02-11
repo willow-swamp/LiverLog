@@ -23,7 +23,10 @@ class CommunityPostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @community_post_comment = CommunityPostComment.new
+    @community_post_comments = @community_post.community_post_comments.includes(:user).order(created_at: :desc)
+  end
 
   def edit
     authorize_user(@community_post, @user)

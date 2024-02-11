@@ -1,0 +1,3 @@
+<%= link_to community_post_like_path(community_post_id: community_post.id), id: "button-like-#{community_post.id}", data: { turbo_method: :delete } do %>
+  <i class="fa-solid fa-thumbs-up fa-lg"></i>
+<% end %>

@@ -10,13 +10,18 @@ Rails.application.routes.draw do
   resources :drink_records, only: %i[new create show edit update destroy]
   resources :groups, only: %i[new create show edit update destroy] do
     resources :posts, only: %i[create show] do
-      resources :post_comments, only: %i[create show destroy], shallow: true
+      resources :post_comments, only: %i[create destroy], shallow: true
       member do
         resources :likes, only: %i[create destroy]
       end
     end
   end
-  resources :community_posts
+  resources :community_posts do
+    resources :community_post_comments, only: %i[create destroy], shallow: true
+    member do
+      resources :community_post_likes, only: %i[create destroy], shallow: true
+    end
+  end
 
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/callback', to: 'oauths#callback'
