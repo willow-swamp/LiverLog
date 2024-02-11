@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_05_134247) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_10_154748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_134247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+  end
+
+  create_table "community_post_comments", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id", null: false
+    t.bigint "community_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_post_id"], name: "index_community_post_comments_on_community_post_id"
+    t.index ["user_id"], name: "index_community_post_comments_on_user_id"
+  end
+
+  create_table "community_post_likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_post_id"], name: "index_community_post_likes_on_community_post_id"
+    t.index ["user_id"], name: "index_community_post_likes_on_user_id"
   end
 
   create_table "community_posts", force: :cascade do |t|
@@ -108,6 +127,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_134247) do
     t.integer "non_drinking_days", default: [], array: true
   end
 
+  add_foreign_key "community_post_comments", "community_posts"
+  add_foreign_key "community_post_comments", "users"
+  add_foreign_key "community_post_likes", "community_posts"
+  add_foreign_key "community_post_likes", "users"
   add_foreign_key "community_posts", "users"
   add_foreign_key "drink_records", "users"
   add_foreign_key "groups", "users", column: "group_admin_id"

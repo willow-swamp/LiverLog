@@ -1,0 +1,27 @@
+<tr id="comment-<%= community_post_comment.id %>">
+  <td style="width: 60px">
+    <div class="avatar">
+      <div class="h-12 w-12 rounded-full">
+        <%= image_tag community_post_comment.user.image %>
+      </div>
+    </div>
+  </td>
+  <td>
+    <h3 class="text-sm font-semibold"><%= community_post_comment.user.username %></h3>
+    <div id="js-comment-<%= community_post_comment.id %>">
+      <div class="text-neutral-900"><%= community_post_comment.message %></div>
+    </div>
+  </td>
+
+  <% if current_user.own?(community_post_comment) %>
+    <td class="action">
+      <ul class="list-inline justify-center" style="float: right;">
+        <li class="list-inline-item">
+          <%= link_to community_post_comment_path(community_post_comment), class: 'js-edit-comment-button', id: "delete-comment-#{community_post_comment.id}", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </li>
+      </ul>
+    </td>
+  <% end %>
+</tr>

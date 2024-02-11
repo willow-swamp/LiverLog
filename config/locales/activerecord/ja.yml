@@ -30,6 +30,10 @@ ja:
         user_id: 'ユーザーID'
         content: '内容'
         image: '画像'
+      community_post_comment:
+        user_id: 'ユーザーID'
+        community_post_id: 'コミュニティポストID'
+        message: 'コメント'
   enums:
     drink_record:
       record_type:

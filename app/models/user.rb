@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :post_likes, source: :post
   accepts_nested_attributes_for :authentications
   has_many :community_posts, dependent: :destroy
+  has_many :community_post_comments, dependent: :destroy
+  has_many :community_post_likes, dependent: :destroy
+  has_many :liked_community_posts, through: :community_post_likes, source: :community_post
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }
@@ -109,6 +112,18 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+
+  def like_community_post(community_post)
+    liked_community_posts << community_post
+  end
+
+  def unlike_community_post(community_post)
+    liked_community_posts.delete(community_post)
+  end
+
+  def like_community_post?(community_post)
+    liked_community_posts.include?(community_post)
   end
 
   private

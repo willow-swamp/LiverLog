@@ -1,0 +1,11 @@
+<div class="divider"></div>
+<ul class='crud-menu-btn list-none'>
+  <li class="inline-block mr-4">
+    <% if current_user.like_community_post?(community_post) %>
+      <%= render 'community_posts/unlike', { community_post: community_post } %>
+    <% else %>
+      <%= render 'community_posts/like', { community_post: community_post } %>
+    <% end %>
+    <%= t('defaults.likes') %>:<%= community_post.community_post_likes.count %>
+  </li>
+</ul> 
