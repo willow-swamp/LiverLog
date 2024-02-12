@@ -1,5 +1,5 @@
 class CommunityPostsController < ApplicationController
-  skip_before_action :require_login, only: %i[index show]
+  skip_before_action :require_login, only: %i[index]
   skip_before_action :require_general, only: %i[index show]
   before_action :set_user, only: %i[index new create edit update destroy]
   before_action :set_community_post, only: %i[show edit update destroy]
@@ -19,7 +19,7 @@ class CommunityPostsController < ApplicationController
       redirect_to community_posts_path
     else
       flash.now[:danger] = t '.error'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -36,10 +36,10 @@ class CommunityPostsController < ApplicationController
     authorize_user(@community_post, @user)
     if @community_post.update(community_post_params)
       flash[:success] = t '.success'
-      redirect_to community_posts_path
+      redirect_to community_post_path(@community_post)
     else
       flash.now[:danger] = t '.error'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

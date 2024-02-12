@@ -29,7 +29,7 @@ class DrinkRecordsController < ApplicationController
 
   def update
     @drink_record.assign_attributes(drink_record_params)
-    if @drink_record.save
+    if @drink_record.save(context: :update)
       redirect_to drink_record_path(@drink_record), success: t('defaults.update_success')
     else
       flash.now[:error] = t 'defaults.record_error'

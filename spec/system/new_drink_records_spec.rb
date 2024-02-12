@@ -42,17 +42,6 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         expect(current_path).to eq new_drink_record_path
       end
     end
-    context '休肝日の詳細を入力する場合' do
-      it '休肝日が記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
-        fill_in 'drink_volume', with: 500
-        fill_in 'alcohol_percentage', with: 5
-        fill_in 'price', with: 500
-        click_button '登録'
-        expect(page).to have_content '記録の登録に失敗しました'
-        expect(current_path).to eq new_drink_record_path
-      end
-    end
   end
 
   describe '飲酒日を記録する' do

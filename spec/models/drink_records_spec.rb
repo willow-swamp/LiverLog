@@ -44,6 +44,11 @@ RSpec.describe DrinkRecord, type: :model do
           expect(drink_reccord).to be_invalid
           expect(drink_reccord.errors[:price]).to be_present
         end
+        it '記録日が重複している' do
+          drink_record = create(:drink_record, :no_drink, user:)
+          duplicate_drink_record = build(:drink_record, :no_drink, user:, start_time: drink_record.start_time)
+          expect(duplicate_drink_record).to be_invalid
+        end
       end
 
       context 'お酒の記録の保存の場合' do
@@ -76,6 +81,11 @@ RSpec.describe DrinkRecord, type: :model do
           drnik_record = build(:drink_record, user:, price: -1)
           expect(drnik_record).to be_invalid
           expect(drnik_record.errors[:price]).to be_present
+        end
+        it '休肝日が登録されている日に記録できない' do
+          drink_record = create(:drink_record, :no_drink, user:)
+          duplicate_drink_record = build(:drink_record, user:, start_time: drink_record.start_time)
+          expect(duplicate_drink_record).to be_invalid
         end
       end
     end

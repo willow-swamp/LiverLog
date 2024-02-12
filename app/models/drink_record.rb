@@ -3,7 +3,9 @@ class DrinkRecord < ApplicationRecord
   has_one :post, dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: { scope: :start_time }, if: :record_type_is_no_drink?
-  validate :no_drink_and_drink_cannot_be_same_day, if: :record_type_is_drink?
+  validate :no_drink_and_drink_cannot_be_same_day, if: :record_type_is_drink?, unless: lambda {
+                                                                                         validation_context == :update
+                                                                                       }
   validates :record_type, presence: true
   validates :start_time, presence: true
   validates :drink_volume, numericality: { only_integer: true, equal_to: 0 }, if: :record_type_is_no_drink?

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :community_post do
-    content { "MyText" }
-    image { "MyString" }
-    user { nil }
+    sequence(:content) { |n| "コミュニティポスト#{n}" }
+    image { 'https://placehold.jp/150x150.png' }
+    association :user
   end
 end
