@@ -6,7 +6,6 @@ ARG RUBY_VERSION=ruby:3.2.2
 ARG NODE_VERSION=19
 
 FROM --platform=linux/amd64 $RUBY_VERSION
-ENV RAILS_ENV=production
 ARG RUBY_VERSION
 ARG NODE_VERSION
 ENV LANG C.UTF-8
@@ -17,14 +16,18 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get update -qq \
 && apt-get install -y build-essential libpq-dev nodejs yarn vim cron
 
-RUN apt-get update \
-&& apt-get install -y chromium
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+&& apt-get update && apt-get install -y google-chrome-stable
 
-RUN CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE) \
-&& wget -N http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip -P ~/ \
+RUN CHROME_VERSION="121.0.6167.85" \
+&& echo "Chrome_Version: ${CHROME_VERSION}" \
+&& curl -sS -o /root/chromedriver_linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROME_VERSION/linux64/chromedriver-linux64.zip \
 && unzip ~/chromedriver_linux64.zip -d ~/ \
-&& mv ~/chromedriver /usr/local/bin/ \
-&& rm ~/chromedriver_linux64.zip
+&& rm ~/chromedriver_linux64.zip \
+&& chown root:root ~/chromedriver-linux64/chromedriver \
+&& chmod 755 ~/chromedriver-linux64/chromedriver \
+&& mv ~/chromedriver-linux64/chromedriver /usr/bin/chromedriver
 
 RUN mkdir /app
 WORKDIR /app

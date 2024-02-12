@@ -7,6 +7,10 @@ FactoryBot.define do
   end
 
   trait :drink do
-    content { "#{user.username}さんがお酒を嗜みました🍺（今日のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(drink_record.drink_volume, drink_record.alcohol_percentage)}g）" }
+    content do
+      "#{user.username}さんがお酒を嗜みました🍺（#{drink_record.start_time.strftime('%m月%d日')}のアルコール摂取量：#{ApplicationController.helpers.alcohol_caluculate(
+        drink_record.drink_volume, drink_record.alcohol_percentage
+      )}g）"
+    end
   end
 end

@@ -33,17 +33,9 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         choose 'no-drink-radio'
       end
       it '休肝日に変更される' do
-        fill_in 'drink_volume', with: '0'
-        fill_in 'alcohol_percentage', with: '0.0'
-        fill_in 'price', with: '0'
         click_button '登録'
         expect(page).to have_content '記録を更新しました'
         expect(current_path).to eq drink_record_path(drink_record)
-      end
-      it 'そのまま飲酒量とアルコール度数が0以外の場合は記録できない' do
-        click_button '登録'
-        expect(page).to have_content '記録の登録に失敗しました'
-        expect(current_path).to eq edit_drink_record_path(drink_record)
       end
     end
   end

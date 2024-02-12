@@ -28,7 +28,7 @@ services:
       - db
       - chrome
   chrome:
-    image: seleniarm/standalone-chromium:latest
+    image: selenium/standalone-chrome-debug
     shm_size: 2g
     ports:
       - "4444:4444"

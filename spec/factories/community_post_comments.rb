@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :community_post_comment do
-    message { "MyText" }
-    user { nil }
-    post { nil }
+    sequence(:message) { |n| "コミュニティコメントのコメント#{n}" }
+    association :user
+    association :community_post
   end
 end
