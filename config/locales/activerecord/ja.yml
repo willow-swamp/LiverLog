@@ -9,6 +9,7 @@ ja:
       user:
         username: 'ユーザー名'
         image: 'ユーザーアイコン'
+        non_drinking_days: '休肝日'
         role: 'ユーザーの種類'
         comment: 'ひとこと'
         reminder: 'リマインダー'

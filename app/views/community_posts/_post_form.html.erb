@@ -1,3 +1,6 @@
+<div class="mx-8">
+  <%= render partial: 'shared/error_messages', locals: { object: community_post } %>
+</div>
 <%= form_with model: community_post, local: true do |f| %>
   <div class="form-control w-full px-8">
     <%= f.label :content, class: "label" %>
