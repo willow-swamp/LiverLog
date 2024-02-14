@@ -17,7 +17,7 @@
     <td class="action">
       <ul class="list-inline justify-center" style="float: right;">
         <li class="list-inline-item">
-          <%= link_to community_post_comment_path(community_post_comment), class: 'js-edit-comment-button', id: "delete-community-post-comment-#{community_post_comment.id}", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } do %>
+          <%= link_to community_post_comment_path(community_post_comment), class: 'js-edit-comment-button', id: "delete-community-post-comment-#{community_post_comment.id}", data: { turbo_method: :delete, turbo_confirm: t("defaults.delete_confirm") } do %>
             <i class="fa-solid fa-trash-can"></i>
           <% end %>
         </li>

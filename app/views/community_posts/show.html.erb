@@ -32,7 +32,7 @@
                     </button>
                     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                       <li><%= link_to t('.edit'), edit_community_post_path(@community_post) %></li>
-                      <li><%= link_to t('.delete'), community_post_path(@community_post), data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %></li>
+                      <li><%= link_to t('.delete'), community_post_path(@community_post), data: { turbo_method: :delete, turbo_confirm: t("defaults.delete_confirm") } %></li>
                     </ul>
                   </div>
                 </div>

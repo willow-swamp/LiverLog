@@ -14,22 +14,22 @@ RSpec.describe User, type: :model do
       it '名前がない' do
         user = build(:user, username: nil)
         expect(user).to be_invalid
-        expect(user.errors[:username]).to include("を入力してください")
+        expect(user.errors[:username]).to include('を入力してください')
       end
       it 'コメントが256文字以上になっている' do
-        user = build(:user, comment: "a" * 257)
+        user = build(:user, comment: 'a' * 257)
         expect(user).to be_invalid
-        expect(user.errors[:comment]).to include("は256文字以内で入力してください")
+        expect(user.errors[:comment]).to include('は256文字以内で入力してください')
       end
       it '休肝日数がない' do
         user = build(:user, non_drinking_days: nil)
         expect(user).to be_invalid
-        expect(user.errors[:non_drinking_days]).to include("を入力してください")
+        expect(user.errors[:non_drinking_days]).to include('を1日以上設定してください')
       end
       it '役割がない' do
         user = build(:user, role: nil)
         expect(user).to be_invalid
-        expect(user.errors[:role]).to include("を入力してください")
+        expect(user.errors[:role]).to include('を入力してください')
       end
       it 'リマインダーの設定がない' do
         user = build(:user, reminder: nil)
@@ -57,22 +57,22 @@ RSpec.describe User, type: :model do
       it '名前がない' do
         user = build(:user, :admin, username: nil)
         expect(user).to be_invalid
-        expect(user.errors[:username]).to include("を入力してください")
+        expect(user.errors[:username]).to include('を入力してください')
       end
       it 'コメントが256文字以上になっている' do
-        user = build(:user, :admin, comment: "a" * 257)
+        user = build(:user, :admin, comment: 'a' * 257)
         expect(user).to be_invalid
-        expect(user.errors[:comment]).to include("は256文字以内で入力してください")
+        expect(user.errors[:comment]).to include('は256文字以内で入力してください')
       end
       it '休肝日数がない' do
         user = build(:user, :admin, non_drinking_days: nil)
         expect(user).to be_invalid
-        expect(user.errors[:non_drinking_days]).to include("を入力してください")
+        expect(user.errors[:non_drinking_days]).to include('を1日以上設定してください')
       end
       it '役割がない' do
         user = build(:user, :admin, role: nil)
         expect(user).to be_invalid
-        expect(user.errors[:role]).to include("を入力してください")
+        expect(user.errors[:role]).to include('を入力してください')
       end
       it 'リマインダーの設定がない' do
         user = build(:user, :admin, reminder: nil)
@@ -100,17 +100,17 @@ RSpec.describe User, type: :model do
       it '名前がない' do
         user = build(:user, :invitee, username: nil)
         expect(user).to be_invalid
-        expect(user.errors[:username]).to include("を入力してください")
+        expect(user.errors[:username]).to include('を入力してください')
       end
       it 'コメントが256文字以上になっている' do
-        user = build(:user, :invitee, comment: "a" * 257)
+        user = build(:user, :invitee, comment: 'a' * 257)
         expect(user).to be_invalid
-        expect(user.errors[:comment]).to include("は256文字以内で入力してください")
+        expect(user.errors[:comment]).to include('は256文字以内で入力してください')
       end
       it '役割がない' do
         user = build(:user, :invitee, role: nil)
         expect(user).to be_invalid
-        expect(user.errors[:role]).to include("を入力してください")
+        expect(user.errors[:role]).to include('を入力してください')
       end
       it 'リマインダーの設定がない' do
         user = build(:user, :invitee, reminder: nil)

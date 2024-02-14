@@ -18,7 +18,7 @@ class CommunityPostsController < ApplicationController
       flash[:success] = t '.success'
       redirect_to community_posts_path
     else
-      flash.now[:danger] = t '.error'
+      flash.now[:error] = t '.error'
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,7 +38,7 @@ class CommunityPostsController < ApplicationController
       flash[:success] = t '.success'
       redirect_to community_post_path(@community_post)
     else
-      flash.now[:danger] = t '.error'
+      flash.now[:error] = t '.error'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -67,7 +67,7 @@ class CommunityPostsController < ApplicationController
   def authorize_user(community_post, user)
     return if community_post.user == user
 
-    flash[:danger] = t 'defaults.access_denied'
+    flash[:error] = t 'defaults.access_denied'
     redirect_to community_posts_path
   end
 end

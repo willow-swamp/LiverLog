@@ -18,12 +18,14 @@ RSpec.describe 'コミュニティポストに対するコメント機能', type
         click_button 'コメントする'
         expect(page).to have_content 'テストコメント'
         expect(page).to have_content user.username
+        expect(page).to have_content 'コメントしました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
       it 'コメントが空の場合、投稿できないこと' do
         fill_in 'community_post_comment[message]', with: ''
         click_button 'コメントする'
+        expect(page).to have_content 'コメントに失敗しました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
@@ -31,6 +33,7 @@ RSpec.describe 'コミュニティポストに対するコメント機能', type
         expect(page).to have_content community_post.content
         expect(page).to have_content community_post_comment.message
         click_link "delete-community-post-comment-#{community_post_comment.id}"
+        expect(page.accept_confirm).to eq '削除しますか？'
         expect(page).to have_no_content 'テストコメント'
       end
     end
@@ -49,12 +52,14 @@ RSpec.describe 'コミュニティポストに対するコメント機能', type
         click_button 'コメントする'
         expect(page).to have_content 'テストコメント'
         expect(page).to have_content other_user.username
+        expect(page).to have_content 'コメントしました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
       it 'コメントが空の場合、投稿できないこと' do
         fill_in 'community_post_comment[message]', with: ''
         click_button 'コメントする'
+        expect(page).to have_content 'コメントに失敗しました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
@@ -82,12 +87,14 @@ RSpec.describe 'コミュニティポストに対するコメント機能', type
         click_button 'コメントする'
         expect(page).to have_content 'テストコメント'
         expect(page).to have_content invitee.username
+        expect(page).to have_content 'コメントしました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
       it 'コメントが空の場合、投稿できないこと' do
         fill_in 'community_post_comment[message]', with: ''
         click_button 'コメントする'
+        expect(page).to have_content 'コメントに失敗しました'
         expect(current_path).to eq community_post_path(community_post)
       end
 
@@ -95,6 +102,7 @@ RSpec.describe 'コミュニティポストに対するコメント機能', type
         expect(page).to have_content community_post.content
         expect(page).to have_content invitee_community_post_comment.message
         click_link "delete-community-post-comment-#{invitee_community_post_comment.id}"
+        expect(page.accept_confirm).to eq '削除しますか？'
         expect(page).to have_no_content invitee_community_post_comment.message
       end
     end

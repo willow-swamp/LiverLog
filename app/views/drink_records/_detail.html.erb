@@ -36,8 +36,8 @@
   </div>
   <% if drink_record_detail.user == current_user %>
     <div class="card-actions justify-end mx-8 mb-4">
-      <%= link_to t('defaults.edit'), edit_drink_record_path(drink_record_detail), class: "btn btn-primary" %>
-      <%= link_to t('defaults.delete'), drink_record_path(drink_record_detail), class: "btn btn-accent", data: { turbo_method: :delete, confirm: t("defaults.delete_confirm") } %>
+      <%= link_to t('defaults.edit'), edit_drink_record_path(drink_record_detail), class: "btn btn-primary", id: "edit-drink-record-#{drink_record_detail.id}" %>
+      <%= link_to t('defaults.delete'), drink_record_path(drink_record_detail), class: "btn btn-accent", id: "delete-drink-record-#{drink_record_detail.id}", data: { turbo_method: :delete, turbo_confirm: t("defaults.delete_confirm") } %>
     </div>
   <% end %>
 <% end %>

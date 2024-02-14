@@ -4,6 +4,7 @@
     <div class="card-body mx-auto items-center text-center">
       <h2 class="card-title"><%= t '.title' %></h2>
       <p><%= t '.form_description' %></p>
+      <%= render partial: 'shared/error_messages', locals: { object: @user } %
       <%= form_with(model: @user, url: invitees_invitation_first_login_path, local: true) do |f| %>
         <div class="form-control w-full max-w-full py-2">
           <%= f.label :username, class: "label" %>

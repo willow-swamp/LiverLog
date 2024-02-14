@@ -31,6 +31,7 @@ RSpec.describe 'コミュニティポストを新しく投稿する', type: :sys
       it 'ポストが投稿されない' do
         click_button '登録'
         expect(page).to have_content 'ポストの投稿に失敗しました'
+        expect(page).to have_content '内容を入力してください'
         expect(current_path).to eq new_community_post_path
       end
     end

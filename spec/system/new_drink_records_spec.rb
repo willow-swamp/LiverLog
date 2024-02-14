@@ -25,6 +25,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         choose 'no-drink-radio'
         click_button '登録'
         expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日：同じ日に休肝日を複数記録することはできません'
         expect(current_path).to eq new_drink_record_path
       end
     end
@@ -39,6 +40,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         fill_in '記録日', with: Date.today + 1
         click_button '登録'
         expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日は未来の日付で登録できません'
         expect(current_path).to eq new_drink_record_path
       end
     end
@@ -64,6 +66,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         fill_in '記録日', with: Date.today + 1
         click_button '登録'
         expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日は未来の日付で登録できません'
         expect(current_path).to eq new_drink_record_path
       end
     end
@@ -107,6 +110,18 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: -1
         click_button '登録'
+        expect(current_path).to eq new_drink_record_path
+      end
+    end
+    context '同じ日に休肝日と飲酒日を記録する場合' do
+      it '記録できない' do
+        choose 'no-drink-radio'
+        click_button '登録'
+        visit new_drink_record_path
+        choose 'drink-radio'
+        click_button '登録'
+        expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日：同じ日に休肝日と飲酒日を記録することはできません'
         expect(current_path).to eq new_drink_record_path
       end
     end

@@ -27,7 +27,7 @@ RSpec.describe DrinkRecord, type: :model do
         it '記録日が未来の日付になっている' do
           drink_record = build(:drink_record, :no_drink, user:, start_time: DateTime.current + 1)
           expect(drink_record).to be_invalid
-          expect(drink_record.errors[:start_time]).to include('未来の日付は使えません')
+          expect(drink_record.errors[:start_time]).to include('は未来の日付で登録できません')
         end
         it '飲酒量が0mlとなる' do
           drink_record = build(:drink_record, :no_drink, user:, drink_volume: 50)
@@ -60,7 +60,7 @@ RSpec.describe DrinkRecord, type: :model do
         it '記録日が未来の日付になっている' do
           drink_record = build(:drink_record, user:, start_time: DateTime.current + 1)
           expect(drink_record).to be_invalid
-          expect(drink_record.errors[:start_time]).to include('未来の日付は使えません')
+          expect(drink_record.errors[:start_time]).to include('は未来の日付で登録できません')
         end
         it '飲酒量が0ml以下となる' do
           drink_record = build(:drink_record, user:, drink_volume: -1)

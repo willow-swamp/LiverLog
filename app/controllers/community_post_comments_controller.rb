@@ -6,7 +6,7 @@ class CommunityPostCommentsController < ApplicationController
     if comment.save
       redirect_to community_post_path(comment.community_post), success: t('defaults.comment_success')
     else
-      redirect_to community_post_path(comment.community_post), danger: t('defaults.comment_error')
+      redirect_to community_post_path(comment.community_post), error: t('defaults.comment_error')
     end
   end
 
