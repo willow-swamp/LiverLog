@@ -38,7 +38,7 @@ class DrinkRecord < ApplicationRecord
   def start_time_cannot_be_in_the_future
     return unless start_time.present? && start_time > DateTime.current
 
-    errors.add(:start_time, '未来の日付は使えません')
+    errors.add(:start_time, 'は未来の日付で登録できません')
   end
 
   def record_type_is_drink?
@@ -52,6 +52,6 @@ class DrinkRecord < ApplicationRecord
   def no_drink_and_drink_cannot_be_same_day
     return unless DrinkRecord.where(user_id:, start_time:, record_type: 'no_drink').exists?
 
-    errors.add(:start_time, '：同じ日に休肝日と飲酒日の両方は記録できません')
+    errors.add(:start_time, '：同じ日に休肝日と飲酒日を記録することはできません')
   end
 end

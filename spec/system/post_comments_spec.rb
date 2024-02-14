@@ -24,6 +24,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
         click_button 'コメントする'
         expect(page).to have_content 'コメント'
         expect(page).to have_content user.username
+        expect(page).to have_content 'コメントしました'
         expect(current_path).to eq group_post_path(group, post)
       end
     end
@@ -32,6 +33,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
       it 'コメントが空の時' do
         fill_in 'post_comment[message]', with: ''
         click_button 'コメントする'
+        expect(page).to have_content 'コメントに失敗しました'
         expect(current_path).to eq group_post_path(group, post)
       end
     end
@@ -48,6 +50,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
       it 'コメントが削除される' do
         expect(page).to have_content post_comment.message
         click_link "delete-comment-#{post_comment.id}"
+        expect(page.accept_confirm).to eq '削除しますか？'
         expect(page).to have_no_content post_comment.message
       end
     end
@@ -63,6 +66,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
           click_button 'コメントする'
           expect(page).to have_content 'コメント'
           expect(page).to have_content invitee.username
+          expect(page).to have_content 'コメントしました'
           expect(current_path).to eq group_post_path(group, post)
         end
       end
@@ -71,6 +75,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
         it 'コメントが空の時' do
           fill_in 'post_comment[message]', with: ''
           click_button 'コメントする'
+          expect(page).to have_content 'コメントに失敗しました'
           expect(current_path).to eq group_post_path(group, post)
         end
       end
@@ -86,6 +91,7 @@ RSpec.describe 'ポストに対するコメント機能', type: :system do
         it 'コメントが削除される' do
           expect(page).to have_content post_comment.message
           click_link "delete-comment-#{post_comment.id}"
+          expect(page.accept_confirm).to eq '削除しますか？'
           expect(page).to have_no_content post_comment.message
         end
       end

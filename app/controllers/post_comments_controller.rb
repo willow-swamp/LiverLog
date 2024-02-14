@@ -6,7 +6,7 @@ class PostCommentsController < ApplicationController
     if comment.save
       redirect_to group_post_path(comment.post.group, comment.post), success: t('defaults.comment_success')
     else
-      redirect_to group_post_path(comment.post.group, comment.post), danger: t('defaults.comment_error')
+      redirect_to group_post_path(comment.post.group, comment.post), error: t('defaults.comment_error')
     end
   end
 

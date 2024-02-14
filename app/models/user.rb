@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :comment, length: { maximum: 256 }
-  validates :non_drinking_days, presence: true, if: -> { role == 'general' || role == 'admin' }
+  validates :non_drinking_days, presence: { message: 'を1日以上設定してください' }, if: -> { role == 'general' || role == 'admin' }
   validates :role, presence: true
   validates :reminder, inclusion: { in: [true, false] }
   validates :first_login, inclusion: { in: [true, false] }

@@ -31,6 +31,7 @@ RSpec.describe 'コミュニティポストを編集する', type: :system do
         fill_in 'community_post[content]', with: ''
         click_button '登録'
         expect(page).to have_content 'ポストの更新に失敗しました'
+        expect(page).to have_content '内容を入力してください'
         expect(current_path).to eq edit_community_post_path(community_post)
       end
     end

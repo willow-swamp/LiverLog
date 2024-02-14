@@ -11,7 +11,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
   describe '飲酒日の編集' do
     before do
       visit drink_record_path(drink_record)
-      click_link '編集'
+      click_link "edit-drink-record-#{drink_record.id}"
     end
 
     context '記録日を変更する場合' do
@@ -25,6 +25,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         fill_in '記録日', with: Date.today + 1
         click_button '登録'
         expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日は未来の日付で登録できません'
         expect(current_path).to eq edit_drink_record_path(drink_record)
       end
     end
@@ -36,6 +37,20 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         click_button '登録'
         expect(page).to have_content '記録を更新しました'
         expect(current_path).to eq drink_record_path(drink_record)
+      end
+    end
+    context '記録タイプを変更する場合' do
+      let!(:other_drink_record) { create(:drink_record, :drink, user:) }
+      before do
+        visit drink_record_path(drink_record)
+        click_link "edit-drink-record-#{drink_record.id}"
+        choose 'no-drink-radio'
+      end
+      it '飲酒日の記録がある場合は休肝日に変更できない' do
+        click_button '登録'
+        expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日：同じ日に休肝日を複数記録することはできません'
+        expect(current_path).to eq edit_drink_record_path(drink_record)
       end
     end
   end
@@ -57,6 +72,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         fill_in '記録日', with: Date.today + 1
         click_button '登録'
         expect(page).to have_content '記録の登録に失敗しました'
+        expect(page).to have_content '記録日は未来の日付で登録できません'
         expect(current_path).to eq edit_drink_record_path(drink_record)
       end
     end
@@ -120,6 +136,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
     context '記録を削除する場合' do
       it '記録が削除される' do
         click_link '削除'
+        expect(page.accept_confirm).to eq '削除しますか？'
         expect(page).to have_content '記録を削除しました'
         expect(current_path).to eq profile_path
       end
