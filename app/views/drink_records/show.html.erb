@@ -1,4 +1,4 @@
-<% content_for(:title, @drink_record.start_time.strftime("%F") + t(".title")) %>
+<% set_meta_tags title: @drink_record.start_time.strftime("%F") + t(".title") %>
 <div class="mx-auto max-w-4xl overflow-hidden bg-base-100 py-4 sm:px-24 sm:py-24 flex-auto">
   <div class="card rounded-xl bg-white shadow-xl">
     <div class="card-body mx-auto items-center py-6 text-center">
