@@ -45,11 +45,15 @@
     <div class="divider md:divider-horizontal"></div>
     <div class="flex-grow md:w-2/3">
       <div role="tablist" class="tabs tabs-bordered">
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="カレンダー" checked/>
+        <input type="radio" name="my_tabs_1" role="tab" class="tab custom-tab" aria-label="カレンダー" checked/>
         <div role="tabpanel" class="tab-content mt-4">
           <%= render partial: 'profiles/record_calendar', locals: { display_records: @display_records } %>
         </div>
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="コミュニティポスト"/>
+        <input type="radio" name="my_tabs_1" role="tab" class="tab custom-tab" aria-label="グラフ"/>
+        <div role="tabpanel" class="tab-content mt-4">
+          <%= render partial: 'profiles/chart', locals: { drink_records: @drink_records } %>
+        </div>
+        <input type="radio" name="my_tabs_1" role="tab" class="tab custom-tab" aria-label="コミュニティポスト"/>
         <div role="tabpanel" class="tab-content mt-4">
           <%= render partial: 'community_posts/posts', locals: { posts: @community_posts } %>
         </div>

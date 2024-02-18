@@ -1,0 +1,57 @@
+<canvas id="drinkChart" height="400" class="p-4 my-2 rounded-box bg-white shadow-xl w-full" style="display: block; box-sizing: border-box; height: 346px; width: 693px;"></canvas>
+<script type="module">
+  import { Chart, registerables } from 'chart.js';
+
+  document.addEventListener("turbo:load", function() {
+    Chart.register(...registerables);
+
+    var ctx = document.getElementById("drinkChart").getContext('2d');
+    var drinkChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          '<%= Date.today.prev_day(6).strftime('%m月%d日') %>',
+          '<%= Date.today.prev_day(5).strftime('%m月%d日') %>',
+          '<%= Date.today.prev_day(4).strftime('%m月%d日') %>',
+          '<%= Date.today.prev_day(3).strftime('%m月%d日') %>',
+          '<%= Date.today.prev_day(2).strftime('%m月%d日') %>',
+          '<%= Date.today.prev_day(1).strftime('%m月%d日') %>',
+          '今日'
+        ],
+        datasets: [{
+          label: '接種したアルコール量',
+          data: [
+            <%= drink_records.record_6days_ago.alcohol_caluculate %>,
+            <%= drink_records.record_5days_ago.alcohol_caluculate %>, 
+            <%= drink_records.record_4days_ago.alcohol_caluculate %>, 
+            <%= drink_records.record_3days_ago.alcohol_caluculate %>, 
+            <%= drink_records.record_2days_ago.alcohol_caluculate %>, 
+            <%= drink_records.record_yesterday.alcohol_caluculate %>, 
+            <%= drink_records.record_today.alcohol_caluculate %>
+          ],
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '直近1週間のアルコール摂取量'
+          }
+        },
+        responsive: true,
+        scales: {
+          y: {
+            suggestedMin: 0,
+            suggestedMax: 10
+          },
+          x: {
+            stacked: true
+          },
+        },
+      }
+    });
+  });
+</script>
