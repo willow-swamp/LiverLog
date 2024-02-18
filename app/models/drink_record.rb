@@ -20,6 +20,16 @@ class DrinkRecord < ApplicationRecord
 
   enum record_type: { no_drink: 0, drink: 1 }
 
+  scope :record_today, -> { where(start_time: Time.zone.now.all_day) }
+  scope :record_yesterday, -> { where(start_time: 1.day.ago.all_day) }
+  scope :record_2days_ago, -> { where(start_time: 2.days.ago.all_day) }
+  scope :record_3days_ago, -> { where(start_time: 3.days.ago.all_day) }
+  scope :record_4days_ago, -> { where(start_time: 4.days.ago.all_day) }
+  scope :record_5days_ago, -> { where(start_time: 5.days.ago.all_day) }
+  scope :record_6days_ago, -> { where(start_time: 6.days.ago.all_day) }
+
+  scope :alcohol_caluculate, -> { sum('drink_volume * alcohol_percentage * 0.01 * 0.8').round(2) }
+
   def create_post
     @user = User.find(user_id)
     @user.groups.each do |group|
