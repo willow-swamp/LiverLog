@@ -7,7 +7,7 @@ class DrinkRecordsController < ApplicationController
   end
 
   def new
-    @drink_record = DrinkRecord.new
+    @drink_record = DrinkRecord.new(alcohol_percentage: 0, price: 0, start_time: Date.today)
   end
 
   def create

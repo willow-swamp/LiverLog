@@ -72,7 +72,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
     end
     context '飲酒記録の詳細を入力する場合' do
       it '飲酒記録が記録される' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: 500
@@ -81,7 +81,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         expect(current_path).to eq "/drink_records/#{DrinkRecord.last.id}"
       end
       it '飲酒量がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: -1
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: 500
@@ -89,7 +89,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         expect(current_path).to eq new_drink_record_path
       end
       it 'アルコール度数がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: -1
         fill_in 'price', with: 500
@@ -97,7 +97,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         expect(current_path).to eq new_drink_record_path
       end
       it 'アルコール度数が100を超える場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 101
         fill_in 'price', with: 500
@@ -105,7 +105,7 @@ RSpec.describe '休肝日&飲酒日を記録する', type: :system do
         expect(current_path).to eq new_drink_record_path
       end
       it '価格がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: -1

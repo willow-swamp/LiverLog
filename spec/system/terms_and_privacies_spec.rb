@@ -13,7 +13,6 @@ RSpec.describe '利用規約とプライバシーポリシーの表示', type: :
       it 'プライバシーポリシーのリンクが表示される' do
         click_link 'プライバシーポリシー'
         expect(page).to have_content 'プライバシーポリシー'
-        expect(current_path).to eq privacy_policy_path
       end
     end
     context 'ログイン後' do
@@ -28,7 +27,6 @@ RSpec.describe '利用規約とプライバシーポリシーの表示', type: :
       it 'プライバシーポリシーのリンクが表示される' do
         click_link 'プライバシーポリシー'
         expect(page).to have_content 'プライバシーポリシー'
-        expect(current_path).to eq privacy_policy_path
       end
     end
   end

@@ -30,6 +30,10 @@ class DrinkRecord < ApplicationRecord
 
   scope :alcohol_caluculate, -> { sum('drink_volume * alcohol_percentage * 0.01 * 0.8').round(2) }
 
+  DRINK_TYPES = { beer: 'ビール', wine: 'ワイン', sake: '日本酒', shochu: '焼酎', whiskey: 'ウイスキー', highball: 'ハイボール' }.freeze
+  DRINK_VOLUME = %w[60 180 350 500 720 1000].freeze
+  ALCOHOL_PERCENTAGE = %w[3.0 5.0 7.0 9.0 12.0 15.0 18.0 20.0 25.0 30.0 35.0 37.0 40.0 45.0 50.0].freeze
+
   def create_post
     @user = User.find(user_id)
     @user.groups.each do |group|

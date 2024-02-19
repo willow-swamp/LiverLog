@@ -9,14 +9,10 @@
   <div class="md:p-8 p-4">
     <div class="form-control mb-4 flex w-full flex-row items-center">
       <%= f.label :start_time, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-      <% if drink_record.start_time.present? %>
-        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: drink_record.start_time.strftime("%Y-%m-%d") %>
+      <% if params[:record_id].present? %>
+        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: DrinkRecord.find(params[:record_id]).start_time.strftime("%Y-%m-%d") %>
       <% else %>
-        <% if params[:record_id].present? %>
-          <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: DrinkRecord.find(params[:record_id]).start_time.strftime("%Y-%m-%d") %>
-        <% else %>
-          <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: Date.today.strftime("%Y-%m-%d") %>
-        <% end %>
+        <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: drink_record.start_time.strftime("%Y-%m-%d") %>
       <% end %>
     </div>
   </div>
@@ -25,19 +21,34 @@
     <div class="md:p-8 p-4">
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <%= f.label :drink_type, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-        <%= f.text_field :drink_type, class: "input input-bordered w-full max-w-xs" %>
+        <%= f.text_field :drink_type, class: "input input-bordered w-full max-w-xs", id: "drink_type", list: "drink-type-list" %>
+        <datalist id="drink-type-list">
+          <% DrinkRecord::DRINK_TYPES.each do |key, value| %>
+            <option value="<%= value %>"><%= value %></option>
+          <% end %>
+        </datalist>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <%= f.label :drink_volume, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-        <div class="flex flex-row items-center">
-          <%= f.number_field :drink_volume, class: "input input-bordered w-full max-w-xs", id: "drink_volume", min: 0 %>
+        <div class="flex flex-row items-center w-full">
+          <%= f.number_field :drink_volume, class: "input input-bordered w-full max-w-xs", id: "drink_volume", min: 0, list: "drink-volume-list" %>
+          <datalist id="drink-volume-list">
+            <% DrinkRecord::DRINK_VOLUME.each do |volume| %>
+              <option value="<%= volume %>"><%= volume %></option>
+            <% end %>
+          </datalist>
           <div class="ml-4 font-semibold">ml</div>
         </div>
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <%= f.label :alcohol_percentage, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-        <div class="flex flex-row items-center">
-          <%= f.number_field :alcohol_percentage, class: "input input-bordered w-full max-w-xs", id: "alcohol_percentage", in: 0..100, step: 0.1 %>
+        <div class="flex flex-row items-center w-full">
+          <%= f.number_field :alcohol_percentage, class: "input input-bordered w-full min-w-md", id: "alcohol_percentage", in: 0..100, list: "alcohol-percentage-list" %>
+          <datalist id="alcohol-percentage-list">
+            <% DrinkRecord::ALCOHOL_PERCENTAGE.each do |percentage| %>
+              <option value="<%= percentage %>"><%= percentage %></option>
+            <% end %>
+          </datalist>
           <div class="ml-4 font-semibold">%</div>
         </div>
       </div>
@@ -52,7 +63,7 @@
       </div>
       <div class="form-control mb-4 flex w-full flex-row items-center">
         <%= f.label :price, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
-        <div class="flex flex-row items-center">
+        <div class="flex flex-row items-center w-full">
           <%= f.number_field :price, class: "input input-bordered w-full max-w-xs", id: "price", min: 0 %>
           <div class="ml-4 font-semibold">円</div>
         </div>

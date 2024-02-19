@@ -86,7 +86,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         expect(current_path).to eq drink_record_path(drink_record)
       end
       it '飲酒日で詳細が記録される' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: 500
@@ -95,7 +95,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         expect(current_path).to eq drink_record_path(drink_record)
       end
       it '飲酒量がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: -1
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: 500
@@ -103,7 +103,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         expect(current_path).to eq edit_drink_record_path(drink_record)
       end
       it 'アルコール度数がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: -1
         fill_in 'price', with: 500
@@ -111,7 +111,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         expect(current_path).to eq edit_drink_record_path(drink_record)
       end
       it 'アルコール度数が100を超える場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 101
         fill_in 'price', with: 500
@@ -119,7 +119,7 @@ RSpec.describe '休肝日&飲酒日記録を編集する', type: :system do
         expect(current_path).to eq edit_drink_record_path(drink_record)
       end
       it '価格がマイナスの場合は記録できない' do
-        fill_in 'drink_record_drink_type', with: 'ビール'
+        fill_in 'drink_type', with: 'ビール'
         fill_in 'drink_volume', with: 500
         fill_in 'alcohol_percentage', with: 5
         fill_in 'price', with: -1
