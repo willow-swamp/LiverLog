@@ -7,13 +7,18 @@
     <%= f.radio_button :record_type, "drink", class: "btn btn-outline btn-secondary join-item m-4 px-12 js-check", "aria-label": :"飲酒日" , id: "drink-radio" %>
   </div>
   <div class="md:p-8 p-4">
-    <div class="form-control mb-4 flex w-full flex-row items-center">
+    <div class="form-control mb-8 flex w-full flex-row items-center">
       <%= f.label :start_time, class: "label md:mr-8 md:w-44 mr-4 w-24" %>
       <% if params[:record_id].present? %>
         <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: DrinkRecord.find(params[:record_id]).start_time.strftime("%Y-%m-%d") %>
       <% else %>
         <%= f.date_field :start_time, class: "input input-bordered w-full max-w-xs", value: drink_record.start_time.strftime("%Y-%m-%d") %>
       <% end %>
+    </div>
+    <div class="alert alert-warning">
+      <p>厚生労働省が推進する国民健康づくり運動「健康日本21」によると、<span class="font-bold">生活習慣病のリスクを高める１日当たりの純アルコール摂取量は</span><span class="font-bold underline text-red-600 text-xl">男性40g以上、女性20g以上</span>であるとされています。(厚生労働省「健康に配慮した飲酒に関するガイドライン」
+      <%= link_to "詳しくはこちら", "https://www.mhlw.go.jp/stf/newpage_37908.html", class: "font-semibold underline" %>)
+      </p>
     </div>
   </div>
   <div id="drink-details">
@@ -68,6 +73,11 @@
           <div class="ml-4 font-semibold">円</div>
         </div>
       </div>
+      <div class="alert alert-info">
+        <p>純アルコール量の計算については<span class="font-bold underline">摂取量(ml) × アルコール濃度（度数/100）× 0.8（アルコールの比重）</span>で算出しています。(厚生労働省「健康に配慮した飲酒に関するガイドライン」
+        <%= link_to "詳しくはこちら", "https://www.mhlw.go.jp/stf/newpage_37908.html", class: "font-semibold underline" %>)
+        </p>
+      </div> 
     </div>
   </div>
   <div class="card-actions justify-end m-8">
