@@ -1,10 +1,6 @@
 <canvas id="drinkChart" height="400" class="p-4 my-2 rounded-box bg-white shadow-xl w-full" style="display: block; box-sizing: border-box; height: 346px; width: 693px;"></canvas>
-<script type="module">
-  import { Chart, registerables } from 'chart.js';
-
+<script>
   document.addEventListener("turbo:load", function() {
-    Chart.register(...registerables);
-
     var ctx = document.getElementById("drinkChart").getContext('2d');
     var drinkChart = new Chart(ctx, {
       type: 'bar',
