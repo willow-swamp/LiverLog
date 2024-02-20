@@ -9,7 +9,7 @@
   <td>
     <h3 class="text-xs"><%= post_comment.user.username %></h3>
     <div id="js-comment-<%= post_comment.id %>">
-      <div class="text-neutral-900"><%= post_comment.message %></div>
+      <div class="text-neutral-900 break-all"><%= safe_join(post_comment.message.split("\n"),tag(:br)) %></div>
     </div>
   </td>
 

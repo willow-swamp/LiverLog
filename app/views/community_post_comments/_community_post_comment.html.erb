@@ -9,7 +9,7 @@
   <td>
     <h3 class="text-sm font-semibold"><%= community_post_comment.user.username %></h3>
     <div id="js-comment-<%= community_post_comment.id %>">
-      <div class="text-neutral-900"><%= community_post_comment.message %></div>
+      <div class="text-neutral-900 break-all"><%= safe_join(community_post_comment.message.split("\n"),tag(:br)) %></div>
     </div>
   </td>
 
