@@ -51,6 +51,11 @@
         </div>
         <input type="radio" name="my_tabs_1" role="tab" class="tab custom-tab" aria-label="グラフ"/>
         <div role="tabpanel" class="tab-content mt-4">
+          <div class="alert alert-warning">
+            <p>厚生労働省が推進する国民健康づくり運動「健康日本21」によると、<span class="font-bold">生活習慣病のリスクを高める１日当たりの純アルコール摂取量は</span><span class="font-bold underline text-red-600 text-xl">男性40g以上、女性20g以上</span>であるとされています。(厚生労働省「健康に配慮した飲酒に関するガイドライン」
+            <%= link_to "詳しくはこちら", "https://www.mhlw.go.jp/stf/newpage_37908.html", class: "font-semibold underline" %>)
+            </p>
+          </div>
           <%= render partial: 'profiles/chart', locals: { drink_records: @drink_records } %>
         </div>
         <input type="radio" name="my_tabs_1" role="tab" class="tab custom-tab" aria-label="コミュニティポスト"/>

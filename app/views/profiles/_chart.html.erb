@@ -28,6 +28,22 @@
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderColor: "rgb(255, 99, 132)",
           borderWidth: 1
+        },
+        {
+          label: 'リスクが高まる量（女性）',
+          data: [20, 20, 20, 20, 20, 20, 20],
+          type: 'line',
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        },
+        {
+          label: 'リスクが高まる量（男性）',
+          data: [40, 40, 40, 40, 40, 40, 40],
+          type: 'line',
+          fill: false,
+          borderColor: 'rgb(255, 205, 86)',
+          tension: 0.1
         }]
       },
       options: {
@@ -40,8 +56,7 @@
         responsive: true,
         scales: {
           y: {
-            suggestedMin: 0,
-            suggestedMax: 10
+            suggestedMax: 50
           },
           x: {
             stacked: true
