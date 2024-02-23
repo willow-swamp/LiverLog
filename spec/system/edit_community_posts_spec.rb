@@ -19,7 +19,7 @@ RSpec.describe 'コミュニティポストを編集する', type: :system do
     context 'フォームの入力値が正常な場合' do
       it '編集に成功する' do
         fill_in 'community_post[content]', with: '編集後のコンテンツ'
-        click_button '登録'
+        click_button '投稿する'
         expect(page).to have_content 'ポストを更新しました'
         expect(page).to have_content '編集後のコンテンツ'
         expect(current_path).to eq community_post_path(community_post)
@@ -29,7 +29,7 @@ RSpec.describe 'コミュニティポストを編集する', type: :system do
     context 'フォームの入力値が異常な場合' do
       it '編集に失敗する' do
         fill_in 'community_post[content]', with: ''
-        click_button '登録'
+        click_button '投稿する'
         expect(page).to have_content 'ポストの更新に失敗しました'
         expect(page).to have_content '内容を入力してください'
         expect(current_path).to eq edit_community_post_path(community_post)

@@ -28,7 +28,7 @@ ja:
     create_success: '記録を登録しました'
     update_success: '記録を更新しました'
     access_denied: 'アクセス権限がありません'
-    post: '投稿'
+    post: '投稿する'
     post_comment: 'コメントする'
     no_post: 'まだ投稿がありません'
     comment_success: 'コメントしました'
