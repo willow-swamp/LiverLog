@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   skip_before_action :require_login, only: %i[top first_login terms_of_service privacy_policy]
   skip_before_action :require_general, only: %i[top first_login terms_of_service privacy_policy]
+  skip_before_action :require_first_login, only: %i[top first_login terms_of_service privacy_policy update]
   before_action :set_user, only: %i[first_login update]
   before_action :first_login?, only: %i[first_login update]
 
@@ -19,7 +20,7 @@ class StaticPagesController < ApplicationController
       redirect_to profile_path, success: 'プロフィールを登録しました'
     else
       flash.now[:error] = 'プロフィールの登録に失敗しました'
-      render 'first_login'
+      render 'first_login', status: :unprocessable_entity
     end
   end
 

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
   before_action :require_general
+  before_action :require_first_login
 
   rescue_from CanCan::AccessDenied do |_exception|
     redirect_to main_app.root_path, error: '画面を閲覧する権限がありません。'
@@ -19,5 +20,15 @@ class ApplicationController < ActionController::Base
 
     redirect_to group_path(current_user.groups.first),
                 warning: t('defaults.access_denied')
+  end
+
+  def require_first_login
+    return unless current_user.first_login
+
+    if current_user.invitee?
+      redirect_to invitees_invitation_first_login_path
+    else
+      redirect_to first_login_path
+    end
   end
 end

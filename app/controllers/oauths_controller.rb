@@ -1,6 +1,7 @@
 class OauthsController < ApplicationController
   skip_before_action :require_login
   skip_before_action :require_general
+  skip_before_action :require_first_login
 
   def oauth
     login_at(params[:provider])
