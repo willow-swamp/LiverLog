@@ -4,7 +4,7 @@
     <div class="card-body mx-auto items-center text-center">
       <h2 class="card-title"><%= t '.form_title' %></h2>
       <p><%= t '.form_description' %></p>
-      <%= render partial: 'shared/error_messages', locals: { object: @user } % %>
+      <%= render partial: 'shared/error_messages', locals: { object: @user } %>
       <%= render partial:'shared/form', locals: {user: @user, url: first_login_path} %>
     </div>
   </div>

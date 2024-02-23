@@ -1,6 +1,7 @@
 class Invitees::InvitationController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new first_login]
   skip_before_action :require_general, only: %i[new first_login update]
+  skip_before_action :require_first_login, only: %i[new first_login update]
   before_action :group_invite_token, only: %i[new]
   before_action :set_user, only: %i[first_login update]
 
@@ -28,9 +29,9 @@ class Invitees::InvitationController < ApplicationController
   end
 
   def first_login?
-    if !@user.first_login
-      redirect_to group_path(@user.group.first), warning: '既にプロフィールは登録済みです'
-    end
+    return if @user.first_login
+
+    redirect_to group_path(@user.group.first), warning: '既にプロフィールは登録済みです'
   end
 
   def group_invite_token

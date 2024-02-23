@@ -1,6 +1,7 @@
 class CommunityPostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
   skip_before_action :require_general, only: %i[index show]
+  skip_before_action :require_first_login, only: %i[index]
   before_action :set_user, only: %i[index new create edit update destroy]
   before_action :set_community_post, only: %i[show edit update destroy]
 
