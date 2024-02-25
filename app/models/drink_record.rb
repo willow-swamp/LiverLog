@@ -1,6 +1,6 @@
 class DrinkRecord < ApplicationRecord
   belongs_to :user
-  has_one :post, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :start_time, presence: true, uniqueness: { scope: :user_id, message: '：同じ日に休肝日を複数記録することはできません' },
                          if: :record_type_is_no_drink?
