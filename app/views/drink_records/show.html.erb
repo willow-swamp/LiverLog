@@ -21,6 +21,10 @@
     </div>
     <% if @drink_record.user == current_user %>
       <div class="card-actions justify-end mx-8 mb-4">
+        <p class="block text-center my-auto">シェア</p>
+        <%= link_to "https://twitter.com/intent/tweet?text=#{tweet_record(@drink_record_details)}%0a%0a&url=https://liverlog-bff5ca6e49ba.herokuapp.com%0a%0a&hashtags=肝ログ&hashtags=飲酒記録", class: "block text-center my-auto pr-2", target: "_blank", rel: "noopener noreferrer", title: "Xでシェア" do %> 
+          <i class="fa-brands fa-x-twitter fa-2xl"></i>
+        <% end %>
         <% if @drink_record.drink? %>
           <%= link_to t('defaults.add_record'), new_drink_record_path(record_id: @drink_record.id), class: "btn btn-outline btn-secondary" %>
         <% end %>
