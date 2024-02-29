@@ -70,4 +70,4 @@ https://liverlog-bff5ca6e49ba.herokuapp.com
 Figma：https://www.figma.com/file/U2WJ5uU9adWanRfoHdO6BJ/%E8%82%9D%E3%83%AD%E3%82%B0%EF%BC%88LiverLog%EF%BC%89?type=design&node-id=14%3A38&mode=design&t=HXMrChrXeIq5pcmc-1
 
 ### ER図
-![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/5b0bb8ac-b4b6-4eab-8a6f-d10f1b64b360)
+![LiverLog-修正 drawio](https://github.com/willow-swamp/LiverLog/assets/73233305/125634b6-b5aa-423d-96f2-04820249bb41)
